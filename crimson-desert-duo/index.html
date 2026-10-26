@@ -95,6 +95,24 @@ footer{margin-top:46px;border-top:1px solid #3c4046;padding-top:16px;color:#999f
  #allRows .rankrow .name,#specialRows .rankrow .name{font-size:1.08rem}
  #allRows .rankrow .detail,#specialRows .rankrow .detail{font-size:.91rem}
 }
+
+/* Compact list rhythm — retain full-size stick artwork */
+#rankRows .rankrow,#allRows .rankrow,#specialRows .rankrow{
+  min-height:0;
+  padding-top:8px;
+  padding-bottom:8px;
+  gap:10px;
+}
+#rankRows,#allRows,#specialRows{row-gap:0}
+#rankRows .rankrow .hand,#allRows .rankrow .hand,#specialRows .rankrow .hand{align-self:center}
+#rankRows .rankrow .detail,#allRows .rankrow .detail,#specialRows .rankrow .detail{margin-top:2px}
+@media(max-width:780px){
+ #rankRows .rankrow,#allRows .rankrow,#specialRows .rankrow{
+   min-height:0;
+   padding-top:8px;
+   padding-bottom:8px;
+ }
+}
 </style></head><body><main><header><h1>Duo Academy</h1><p>Crimson Desert · Learn the hands and practise recognising them.</p></header>
 <nav aria-label="Site sections"><button class="active" data-page="practice">Practice</button><button data-page="rankings">Rankings</button><button data-page="catalogue">All combinations</button><button data-page="special">Special hands</button></nav>
 <section id="practice"><div class="controls"><label>Mode<select id="mode"><option value="name">Identify hand</option><option value="duel">Which hand wins?</option><option value="points">Calculate points</option></select></label><label>Focus<select id="focus"><option value="all">All standard hands</option><option value="basics">Pairs & points</option><option value="named">Named hands</option></select></label></div><div class="stats"><span>Correct<strong id="correct">0</strong></span><span>Questions<strong id="attempted">0</strong></span><span>Accuracy<strong id="accuracy">—</strong></span><span>Streak<strong id="streak">0</strong></span></div><div class="stage"><div class="prompt" id="prompt"></div><div id="visual"></div></div><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="actions"><button id="next" class="next" hidden>Next hand →</button><button id="reset">Reset score</button></div></section>
