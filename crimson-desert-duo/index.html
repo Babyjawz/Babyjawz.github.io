@@ -98,6 +98,16 @@ footer{margin-top:46px;border-top:1px solid #3c4046;padding-top:16px;color:#999f
 .example-hand .stick{width:58px;height:96px}
 .rules-tip{border-left:2px solid #777e88;padding-left:15px}
 @media(max-width:640px){.guide-item{grid-template-columns:30px minmax(0,1fr);gap:9px;padding:14px 0}#rules p{font-size:.94rem}}
+
+.cheat-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:12px 0 16px}
+.cheat-compare>div{border-top:1px solid #45494e;padding-top:12px}
+.cheat-compare strong{color:#f1f2f3}
+.cheat-compare p{margin:7px 0 0}
+#cheatingRules{margin-top:32px}
+#cheatingRules h3{font-size:1.01rem;margin:18px 0 7px}
+.rule-small{font-size:.83rem!important;color:#a5abb2}
+.rule-small a{color:#ccd7e5}
+@media(max-width:640px){.cheat-compare{grid-template-columns:1fr;gap:8px}}
 </style></head><body><main><header><h1>Duo Academy</h1><p>Learn Duo, the two-stick gambling minigame in Crimson Desert. Understand the hands, then test yourself.</p></header>
 <nav aria-label="Site sections"><button class="active" data-page="rules">Rules</button><button data-page="rankings">Rankings</button><button data-page="special">Special hands</button><button data-page="catalogue">All combinations</button><button data-page="practice">Practice</button></nav>
 <section id="rules">
@@ -108,6 +118,22 @@ footer{margin-top:46px;border-top:1px solid #3c4046;padding-top:16px;color:#999f
 <div class="guide-item"><div class="guide-count">02</div><div><h3>Check your hand</h3><p>Strong combinations beat ordinary point totals. Learn the order: premium combinations, matching pairs, named combinations, then ordinary points.</p><div id="exampleHand" class="example-hand"></div></div></div>
 <div class="guide-item"><div class="guide-count">03</div><div><h3>Decide whether to bet</h3><p>Compare your hand with the sticks you can see opponents holding. Depending on the betting round, you can check, call, raise, or fold.</p></div></div>
 <div class="guide-item"><div class="guide-count">04</div><div><h3>Reveal and compare</h3><p>When the betting ends, the best-ranked hand wins. Unusual special combinations can change the normal result or cause a rematch.</p></div></div>
+</div>
+<div id="cheatingRules">
+<h2>Cheating and catching cheaters</h2>
+<p>Cheating is a real mechanic in Duo. Both Kliff and the NPCs can manipulate a deal, and paying attention to <strong>how the sticks are drawn</strong> can be more valuable than studying the finished hand.</p>
+<h3>Spot the cheating animation</h3>
+<div class="cheat-compare">
+<div><strong>Honest draw</strong><p>Dealer normally lifts the elbow and takes a stick from the <strong>top</strong> of the pile. When dealing to themselves, their hand turns outward and the thumb points down.</p></div>
+<div><strong>Suspicious draw</strong><p>Watch for an elbow that stays tucked in, a stick taken from the <strong>side</strong>, or an unusual grip with the thumb pointing up. The exact hand orientation also depends on whom they're dealing to.</p></div>
+</div>
+<p class="rule-small">Focus on the hand, elbow and direction of the draw, not the final hand value. Some players also report cheating during the reveal phase. <a href="https://thegameswiki.com/crimson-desert/wiki/duo-and-five-card-strategy-guide/history/61dbaefd-a70b-40b5-9c5b-f3e149396395" target="_blank" rel="noopener noreferrer">Animation reference</a></p>
+<h3>How to learn and use cheating</h3>
+<p>After you observe an NPC cheating through the blue-highlighted <strong>Watch and Learn</strong> interaction three times, Kliff unlocks the cheating skill. When <strong>you are dealing</strong>, hold the <strong>Hide Hand</strong> prompt to pick a specific stick number and colour for your hand. You can use this to improve your chance of making a strong pair.</p>
+<h3>Accusing another player</h3>
+<p>If you spot cheating, use the <strong>Accuse</strong> action. A correct accusation removes the offender from the table and distributes their money among the remaining players. An incorrect accusation can cost your wager, get you thrown out and temporarily prevent you from returning.</p>
+<p class="rules-tip"><strong>Practical tip:</strong> Watch the dealer's movement before making accusations. Don't accuse simply because an opponent has a strong hand. In-game prompts and timing can depend on the phase of play.</p>
+<p class="rule-small">Further reading: <a href="https://www.gamespot.com/gallery/crimson-desert-duo-five-card-minigame/2900-7576/" target="_blank" rel="noopener noreferrer">GameSpot Duo/Five-Card guide</a> · <a href="https://thegameswiki.com/crimson-desert/wiki/gambling" target="_blank" rel="noopener noreferrer">Gambling mechanics reference</a></p>
 </div>
 <h2>How ordinary points work</h2><p>Add the two numbers and keep the last digit. For example, <strong>7 + 8 = 15</strong>, so that hand is worth <strong>5 points</strong>. But check for pairs or named hands <em>before</em> calculating points.</p>
 <p class="rules-tip">Use <strong>Rankings</strong> as your quick-reference chart, <strong>Special Hands</strong> for exceptions, <strong>All Combinations</strong> to look up a pairing, and <strong>Practice</strong> to test yourself.</p>
