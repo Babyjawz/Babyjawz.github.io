@@ -185,6 +185,20 @@ main>h1{font-size:clamp(2rem,3.8vw,3.5rem)!important;line-height:1.1!important;m
 #training .choices button.wrong{border-bottom-color:#ff9a9e!important;color:#ff9a9e!important}
 #training #reset{border:0!important;background:none!important;padding:5px 4px!important;font-size:.85rem!important;color:#929aa4!important}
 @media(max-width:530px){#training .question .duo-stick{width:83px!important;height:147px!important}#training .choices{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+
+/* Clean practice layout: large visual, plain answer text */
+#training .question{min-height:360px!important;padding:24px 12px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;background:#1b1d20!important;border:0!important;box-shadow:none!important}
+#training .question h2{font-size:1.08rem!important;margin:0 0 18px!important}
+#training .question .duo-stick{width:133px!important;height:232px!important}
+#training .question .hand{gap:10px!important;margin:0!important}
+#training .choices{display:flex!important;flex-wrap:wrap!important;justify-content:center!important;align-items:center!important;gap:12px 28px!important;margin:14px auto!important;max-width:780px!important}
+#training .choices button{display:inline-block!important;flex:0 0 auto!important;width:auto!important;min-width:0!important;min-height:0!important;padding:10px 4px!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-weight:500!important;color:#d5d9df!important}
+#training .choices button:hover:not(:disabled){color:#fff!important;background:transparent!important;text-decoration:underline!important;text-underline-offset:5px!important}
+#training .choices button.correct{color:#83d7a4!important;background:transparent!important;text-decoration:underline!important}
+#training .choices button.wrong{color:#ec9099!important;background:transparent!important;text-decoration:line-through!important}
+#training .choices button:focus-visible{outline:2px solid #aeb9c7!important;outline-offset:3px!important}
+#training #reset{background:transparent!important;border:0!important;color:#a2a9b3!important;padding:5px!important}
+@media(max-width:570px){#training .question .duo-stick{width:93px!important;height:168px!important}#training .question{min-height:290px!important}}
 </style></head><body><main>
 <div class="eyebrow">FIELD GUIDE · INTERACTIVE TRAINING</div><h1>Crimson Desert<br><span style="color:var(--gold)">Duo Academy</span></h1>
 <p>Tally-stick training for Crimson Desert: recognise carved red and yellow sticks, master hand rankings and compare hands at a glance.</p>
