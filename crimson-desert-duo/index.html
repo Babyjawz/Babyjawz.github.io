@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Crimson Desert · Duo Academy 3.5</title>
+<title>Crimson Desert · Duo Academy 3.6</title>
 <style>
 :root{color-scheme:dark;--bg:#11151b;--panel:#1e2733;--line:#445265;--gold:#f0cd8b;--text:#f4f1e9;--sub:#b9c2ce;--ok:#64dba3;--bad:#ff9eaa}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#2b303e,#11151b 65%);color:var(--text);font:16px/1.5 system-ui,"Segoe UI",sans-serif}main{max-width:1050px;margin:auto;padding:32px 18px 90px}h1{font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.08;margin:14px 0}h2{margin:0 0 14px}h3{color:var(--gold);margin:19px 0 8px}p{color:var(--sub)}strong{color:var(--text)}.eyebrow{color:var(--gold);font-size:.78rem;font-weight:800;letter-spacing:.15em}.panel{border:1px solid var(--line);background:linear-gradient(145deg,#202b39,#19212b);padding:22px;border-radius:17px;margin-top:20px}.tabs,.buttons,.stats,.settings{display:flex;flex-wrap:wrap;gap:9px}.tabs{margin-top:25px}button,select{color:var(--text);background:#303d4f;border:1px solid #67798f;border-radius:10px;padding:11px 14px;font:inherit;cursor:pointer}button:hover{background:#45546a}button.active,button.primary{background:var(--gold);color:#171c23;border-color:var(--gold);font-weight:750}button:disabled{cursor:default;opacity:.8}button:focus-visible,select:focus-visible{outline:3px solid #ffda8a}.stats>div{background:#2b3644;border-radius:10px;padding:10px 14px;min-width:105px;flex:1;color:var(--sub)}.stats strong{display:block;font-size:1.5rem;color:var(--gold)}label{display:block;margin:9px 0 5px;color:var(--sub)}.settings>div{flex:1;min-width:175px}.settings select{width:100%}.hand{display:flex;justify-content:center;gap:13px;margin:17px auto}.tile{width:76px;height:107px;border-radius:10px;border:2px solid #afbdc9;background:linear-gradient(135deg,#415569,#273649);display:flex;justify-content:center;align-items:center;font-size:2.4rem;font-weight:800;box-shadow:inset 0 0 0 4px #ffffff09}.tile.red{border-color:#e0a09e;background:linear-gradient(130deg,#744551,#472c3b)}.tile.yellow{border-color:#e8d08c;background:linear-gradient(130deg,#71613c,#423a2a)}.tile small{font-size:.6rem}.question{text-align:center;margin:22px 0}.question h2{font-size:1.15rem;color:var(--sub)}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}.choices button{min-height:58px}.choices .correct{border-color:var(--ok);background:#225943}.choices .wrong{border-color:var(--bad);background:#66323d}.feedback{border:1px solid #627184;background:#2d3949;padding:15px;border-radius:12px;margin:14px 0}.rank-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.rank-grid>div{border:1px solid var(--line);background:#2c3745;border-radius:10px;padding:12px}.rank-grid span{color:var(--gold);font-weight:750}#duel{display:flex;justify-content:space-around;align-items:center;gap:9px;flex-wrap:wrap}.duelSide{text-align:center;min-width:145px}.duelSide .tile{width:56px;height:86px;font-size:1.75rem}.duelSide .hand{gap:7px}table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #485463;padding:10px}th{color:var(--gold)}a{color:#b9dcff}.subtle{font-size:.86rem;color:var(--sub)}.warn{border-left:3px solid #e9c480;padding:9px 14px;background:#ffffff08}footer{color:var(--sub);font-size:.82rem;margin-top:35px}#catalogCount{color:var(--gold)}@media(max-width:460px){.panel{padding:14px}.tile{width:65px;height:96px}.duelSide .tile{width:48px;height:72px}}@media print{body{background:#fff;color:#000}.panel,.rank-grid>div{background:white;color:#000;box-shadow:none}.tabs,#training{display:none}}
@@ -138,6 +138,23 @@ h1,h2,h3{color:#f3f4f5!important}
 .tile.mixed,.rank-grid .tile.mixed{background:linear-gradient(158deg,#b48b30 0 48%,#a32d31 48% 100%)!important}
 .tile .tally,.tile .five:after{background:#fff9e9!important;box-shadow:none!important}
 .tile .five{background:repeating-linear-gradient(90deg,#fff9e9 0 3px,transparent 3px 8px)!important}
+
+/* v3.6: flat stone-grey game interface + hand-drawn tally sticks */
+html,body,body{background:#18191b!important;background-image:none!important;color:#f0f0ed!important}
+main{max-width:1100px}
+.panel{background:#242629!important;border:1px solid #3b3e42!important;border-radius:8px!important;box-shadow:none!important}
+.question{background:#1d1f22!important;border:1px solid #36393d!important;border-radius:6px!important}
+.stats>div{background:#303236!important;border:1px solid #3d4045!important;border-radius:5px!important}
+button,select,.choices button{background:#323438!important;color:#efefed!important;border:1px solid #53565b!important;border-radius:5px!important}
+button.active,button.primary{background:#d4d4d1!important;color:#151515!important;border-color:#d4d4d1!important}
+button:hover{background:#414449!important}
+.rank-grid>div{background:#2c2e31!important;border-color:#42454a!important;border-radius:6px!important}
+.feedback,.warn{background:#2b2d30!important;border-color:#494c50!important}
+.eyebrow,h1 span,h3{color:#f0f0ed!important}
+.duo-stick{display:block;width:53px;height:79px;overflow:visible;flex:none;filter:none!important;box-shadow:none!important;transform:none!important}
+.rank-grid .duo-stick{width:43px;height:65px}
+.duelSide .duo-stick{width:45px;height:69px}
+.hand{gap:3px!important;align-items:center}
 </style></head><body><main>
 <div class="eyebrow">FIELD GUIDE · INTERACTIVE TRAINING</div><h1>Crimson Desert<br><span style="color:var(--gold)">Duo Academy 3.0</span></h1>
 <p>Tally-stick training for Crimson Desert: recognise carved red and yellow sticks, master hand rankings and compare hands at a glance.</p>
@@ -160,7 +177,25 @@ const special=[[3,7],[4,7],[4,9],[1,3],[1,8],[3,8]];
 const all=[];for(let a=1;a<=10;a++)for(let b=a;b<=10;b++)all.push([a,b]);
 const key=h=>h.join('-');const isSpecial=h=>special.some(x=>key(x)===key(h));
 function details(h){let [a,b]=h;if(a===b)return{group:'pair',name:a===10?'Ten Pair':a+' Pair',rank:100+a,description:'Matching numbers make a pair. Higher pairs beat lower pairs.'};let n=named.findIndex(x=>x[0]===a&&x[1]===b);if(n>=0)return{group:'named',name:named[n][2],rank:90-n,description:'Named combination #'+(n+1)+' of six. All named combinations beat ordinary points.'};let p=(a+b)%10;return{group:'points',name:p===9?'Perfect Nine':p===0?'Zero':p+' Points',rank:p,description:a+' + '+b+' = '+(a+b)+'. Keep the last digit: '+p+' points.'}}
-function tile(n,color){let c=color||'mixed', marks='',remain=n;while(remain>=5){marks+='<span class="five"></span>';remain-=5}for(let i=0;i<remain;i++)marks+='<i class="tally"></i>';return '<span class="tile '+c+'" role="img" aria-label="'+c+' '+n+' tally stick"><span class="tallies">'+marks+'</span></span>'}
+function tallySvg(n,color){
+ const gold='#ba8c30',red='#a02e32';
+ const background=color==='red'?red:color==='yellow'?gold:'url(#paint)';
+ const tally=(count,y)=>{
+   let s='';let xs=count===5?[14,22,30,38]:Array.from({length:count},(_,i)=>26-(count-1)*4+i*8);
+   xs.forEach((x,i)=>s+='<path d="M'+x+' '+(y+(i%3-1))+' l'+(i%2?1:-1)+' 23"/>');
+   if(count===5)s+='<path d="M11 '+(y+20)+' L41 '+(y+3)+'"/>';
+   return s;
+ };
+ let marks='',v=n, top=n>5?18:30;
+ if(v>=5){marks+=tally(5,top);v-=5;top+=31;}
+ if(v>=5){marks+=tally(5,top);v-=5;top+=31;}
+ if(v>0)marks+=tally(v,top);
+ return '<svg class="duo-stick" viewBox="0 0 54 80" role="img" aria-label="'+n+' tally marks on '+color+' stick" xmlns="http://www.w3.org/2000/svg">'+
+ '<defs><linearGradient id="paint" x1="0" y1="0" x2="0.14" y2="1"><stop offset="0%" stop-color="'+gold+'"/><stop offset="52%" stop-color="'+gold+'"/><stop offset="53%" stop-color="'+red+'"/><stop offset="100%" stop-color="'+red+'"/></linearGradient></defs>'+
+ '<path fill="'+background+'" d="M5 2L12 1L20 3L31 1L42 3L49 2L52 8L51 19L53 36L51 49L53 66L49 77L41 79L31 77L20 79L11 77L3 79L2 67L3 52L1 37L3 22L2 9Z"/>'+
+ '<g fill="none" stroke="#fff7e9" stroke-width="3.8" stroke-linecap="square" stroke-linejoin="miter">'+marks+'</g></svg>';
+}
+function tile(n,color){return tallySvg(n,color||'mixed')}
 function card(h,colors){return '<div class="hand">'+h.map((n,i)=>tile(n,colors?colors[i]:(i===0?'yellow':'mixed'))).join('')+'</div>'}
 function sample(list){return list[Math.floor(Math.random()*list.length)]}function randomise(arr){let a=arr.slice();for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 const safe=all.filter(h=>!isSpecial(h));function pool(){let v=$('level').value;if(v==='basics')return safe.filter(h=>details(h).group!=='named');if(v==='named')return safe.filter(h=>details(h).group==='named');return safe}
