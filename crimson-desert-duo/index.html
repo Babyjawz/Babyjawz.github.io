@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Crimson Desert · Duo Academy 3.7</title>
+<title>Crimson Desert · Duo Academy 3.8</title>
 <style>
 :root{color-scheme:dark;--bg:#11151b;--panel:#1e2733;--line:#445265;--gold:#f0cd8b;--text:#f4f1e9;--sub:#b9c2ce;--ok:#64dba3;--bad:#ff9eaa}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#2b303e,#11151b 65%);color:var(--text);font:16px/1.5 system-ui,"Segoe UI",sans-serif}main{max-width:1050px;margin:auto;padding:32px 18px 90px}h1{font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.08;margin:14px 0}h2{margin:0 0 14px}h3{color:var(--gold);margin:19px 0 8px}p{color:var(--sub)}strong{color:var(--text)}.eyebrow{color:var(--gold);font-size:.78rem;font-weight:800;letter-spacing:.15em}.panel{border:1px solid var(--line);background:linear-gradient(145deg,#202b39,#19212b);padding:22px;border-radius:17px;margin-top:20px}.tabs,.buttons,.stats,.settings{display:flex;flex-wrap:wrap;gap:9px}.tabs{margin-top:25px}button,select{color:var(--text);background:#303d4f;border:1px solid #67798f;border-radius:10px;padding:11px 14px;font:inherit;cursor:pointer}button:hover{background:#45546a}button.active,button.primary{background:var(--gold);color:#171c23;border-color:var(--gold);font-weight:750}button:disabled{cursor:default;opacity:.8}button:focus-visible,select:focus-visible{outline:3px solid #ffda8a}.stats>div{background:#2b3644;border-radius:10px;padding:10px 14px;min-width:105px;flex:1;color:var(--sub)}.stats strong{display:block;font-size:1.5rem;color:var(--gold)}label{display:block;margin:9px 0 5px;color:var(--sub)}.settings>div{flex:1;min-width:175px}.settings select{width:100%}.hand{display:flex;justify-content:center;gap:13px;margin:17px auto}.tile{width:76px;height:107px;border-radius:10px;border:2px solid #afbdc9;background:linear-gradient(135deg,#415569,#273649);display:flex;justify-content:center;align-items:center;font-size:2.4rem;font-weight:800;box-shadow:inset 0 0 0 4px #ffffff09}.tile.red{border-color:#e0a09e;background:linear-gradient(130deg,#744551,#472c3b)}.tile.yellow{border-color:#e8d08c;background:linear-gradient(130deg,#71613c,#423a2a)}.tile small{font-size:.6rem}.question{text-align:center;margin:22px 0}.question h2{font-size:1.15rem;color:var(--sub)}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}.choices button{min-height:58px}.choices .correct{border-color:var(--ok);background:#225943}.choices .wrong{border-color:var(--bad);background:#66323d}.feedback{border:1px solid #627184;background:#2d3949;padding:15px;border-radius:12px;margin:14px 0}.rank-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.rank-grid>div{border:1px solid var(--line);background:#2c3745;border-radius:10px;padding:12px}.rank-grid span{color:var(--gold);font-weight:750}#duel{display:flex;justify-content:space-around;align-items:center;gap:9px;flex-wrap:wrap}.duelSide{text-align:center;min-width:145px}.duelSide .tile{width:56px;height:86px;font-size:1.75rem}.duelSide .hand{gap:7px}table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #485463;padding:10px}th{color:var(--gold)}a{color:#b9dcff}.subtle{font-size:.86rem;color:var(--sub)}.warn{border-left:3px solid #e9c480;padding:9px 14px;background:#ffffff08}footer{color:var(--sub);font-size:.82rem;margin-top:35px}#catalogCount{color:var(--gold)}@media(max-width:460px){.panel{padding:14px}.tile{width:65px;height:96px}.duelSide .tile{width:48px;height:72px}}@media print{body{background:#fff;color:#000}.panel,.rank-grid>div{background:white;color:#000;box-shadow:none}.tabs,#training{display:none}}
@@ -155,7 +155,7 @@ button:hover{background:#414449!important}
 .rank-grid .duo-stick{width:43px;height:65px}
 .duelSide .duo-stick{width:45px;height:69px}
 .hand{gap:3px!important;align-items:center}
-</style></head><body><main>
+.duo-stick{width:46px!important;height:81px!important;display:block!important;flex:none!important;background:none!important;box-shadow:none!important;filter:none!important;clip-path:none!important;transform:none!important}.rank-grid .duo-stick{width:36px!important;height:65px!important}.duelSide .duo-stick{width:39px!important;height:70px!important}.hand{gap:2px!important} </style></head><body><main>
 <div class="eyebrow">FIELD GUIDE · INTERACTIVE TRAINING</div><h1>Crimson Desert<br><span style="color:var(--gold)">Duo Academy 3.0</span></h1>
 <p>Tally-stick training for Crimson Desert: recognise carved red and yellow sticks, master hand rankings and compare hands at a glance.</p>
 <div class="tabs" role="tablist"><button data-tab="training" class="active">Practice</button><button data-tab="reference">Rankings</button><button data-tab="catalog">All combinations</button><button data-tab="special">Special rules</button></div>
@@ -178,22 +178,22 @@ const all=[];for(let a=1;a<=10;a++)for(let b=a;b<=10;b++)all.push([a,b]);
 const key=h=>h.join('-');const isSpecial=h=>special.some(x=>key(x)===key(h));
 function details(h){let [a,b]=h;if(a===b)return{group:'pair',name:a===10?'Ten Pair':a+' Pair',rank:100+a,description:'Matching numbers make a pair. Higher pairs beat lower pairs.'};let n=named.findIndex(x=>x[0]===a&&x[1]===b);if(n>=0)return{group:'named',name:named[n][2],rank:90-n,description:'Named combination #'+(n+1)+' of six. All named combinations beat ordinary points.'};let p=(a+b)%10;return{group:'points',name:p===9?'Perfect Nine':p===0?'Zero':p+' Points',rank:p,description:a+' + '+b+' = '+(a+b)+'. Keep the last digit: '+p+' points.'}}
 function tallySvg(n,color){
- const red=color==='red',fill=red?'#b33532':'#bd9134';
- function strokeGroup(count,y){
-   let s='',xs=count===5?[13,21,29,37]:Array.from({length:count},(_,i)=>25-(count-1)*4.1+i*8.2);
-   xs.forEach((x,i)=>s+='<path d="M'+x+' '+(y+(i%2?1:-1))+' L'+(x+(i%2?-.9:.7))+' '+(y+25+(i%3-1))+'"/>');
-   if(count===5)s+='<path d="M10 '+(y+21)+' L40 '+(y+3)+'"/>';
-   return s;
+ const red=color==='red',fill=red?'#ae3430':'#bb9133';
+ function marks(count,y){
+  let xs=count===5?[15,21,27,33]:Array.from({length:count},(_,i)=>24-(count-1)*3.7+i*7.4);
+  let s=xs.map((x,i)=>'<path d="M'+x+' '+(y+(i%2?0.7:-0.5))+' l'+(i%2?-.4:.5)+' 17"/>').join('');
+  if(count===5)s+='<path d="M12 '+(y+16)+' L36 '+(y+2)+'"/>';
+  return s;
  }
- let s='',remaining=n,y=n>5?10:23;
- while(remaining>=5){s+=strokeGroup(5,y);remaining-=5;y+=31}
- if(remaining)s+=strokeGroup(remaining,y);
- return '<svg class="duo-stick" viewBox="0 0 52 78" role="img" aria-label="'+n+' white tally marks on '+(red?'red':'ochre')+' stick" xmlns="http://www.w3.org/2000/svg">'+
- '<path fill="'+fill+'" d="M7 2L15 1L25 2L36 1L46 3L48 7L48 16L49 29L48 42L49 57L47 75L40 77L30 76L20 77L9 75L5 77L4 63L5 47L4 30L5 17L5 7Z"/>'+
- '<g fill="none" stroke="#fff7eb" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter">'+s+'</g></svg>';
+ let remaining=n,y=n>5?15:28, strokes='';
+ while(remaining>=5){strokes+=marks(5,y);remaining-=5;y+=25}
+ if(remaining)strokes+=marks(remaining,y);
+ return '<svg class="duo-stick" viewBox="0 0 48 81" role="img" aria-label="'+n+' tally marks on '+(red?'red':'gold')+' stick" xmlns="http://www.w3.org/2000/svg">'+
+ '<path fill="'+fill+'" d="M10 3 Q13 1 18 2 L29 2 Q36 1 39 4 Q43 6 43 13 L43 63 Q44 67 42 71 L42 78 L37 76 L33 79 L29 77 L25 79 L20 77 L15 79 L11 77 L7 79 L7 69 Q6 65 6 61 L6 14 Q6 8 10 3Z"/>'+
+ '<g fill="none" stroke="#fff9ef" stroke-width="2.65" stroke-linecap="round" stroke-linejoin="round">'+strokes+'</g></svg>';
 }
 function tile(n,color){return tallySvg(n,color==='red'?'red':'yellow')}
-function card(h,colors){return '<div class="hand">'+h.map((n,i)=>tile(n,colors?colors[i]:(i===0?'yellow':'red'))).join('')+'</div>'}
+function card(h,colors){return '<div class="hand">'+h.map((n,i)=>tile(n,colors?colors[i]:(i%2?'red':'yellow'))).join('')+'</div>'}
 function sample(list){return list[Math.floor(Math.random()*list.length)]}function randomise(arr){let a=arr.slice();for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 const safe=all.filter(h=>!isSpecial(h));function pool(){let v=$('level').value;if(v==='basics')return safe.filter(h=>details(h).group!=='named');if(v==='named')return safe.filter(h=>details(h).group==='named');return safe}
 let s={correct:0,attempts:0,streak:0};try{let stored=JSON.parse(localStorage.getItem('duoAcademyV2'));if(stored&&Number.isInteger(stored.attempts)&&Number.isInteger(stored.correct))s=stored}catch(e){}
