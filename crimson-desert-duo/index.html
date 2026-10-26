@@ -30,88 +30,32 @@ select{display:block;margin-top:6px;background:#292c30;border:1px solid #45494e;
 .feedback{text-align:center;min-height:28px;color:#c0c5cc;font-size:.92rem}
 .actions{display:flex;gap:26px;justify-content:center}.actions button{border:0;background:transparent;color:#b2b8c0;padding:9px}.actions .next{color:white;font-weight:600}
 .sectionnote{font-size:.91rem}
-#rankRows,#allRows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px}
-.rankrow{display:flex;align-items:center;min-width:0;min-height:145px;gap:11px;padding:14px 3px;border-bottom:1px solid #3b3f45}
-.rankrow .rank{font-size:.84rem;min-width:18px;color:#a2a8b1}
-.rankrow .hand{flex:none;width:110px;gap:3px;justify-content:flex-start}
-.rankrow .stick{width:53px;height:89px}
-.rankrow .info{min-width:0;overflow-wrap:break-word}
-.rankrow .name{font-weight:650;font-size:1.02rem}
-.rankrow .detail{margin-top:5px;color:#b6bcc4;font-size:.86rem;line-height:1.4}
-#allRows .rankrow{min-height:143px}
-#allRows .rankrow .hand{width:110px}
-#allRows .rankrow .stick{width:53px;height:89px}
-#specialRows .rankrow{min-height:135px}
-#specialRows .rankrow .stick{width:60px;height:98px}
-#specialRows .rankrow .hand{width:130px}
+#rankRows,#allRows,#specialRows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px;row-gap:0}
+#rankRows .rankrow,#allRows .rankrow,#specialRows .rankrow{display:flex;align-items:center;min-width:0;min-height:0;padding:9px 2px;gap:9px;border-bottom:1px solid #3b3f45}
+#rankRows .rankrow .rank,#allRows .rankrow .rank,#specialRows .rankrow .rank{flex:none;min-width:17px;font-size:.8rem;color:#a2a8b1}
+#rankRows .rankrow .hand,#allRows .rankrow .hand,#specialRows .rankrow .hand{width:114px;flex:none;gap:4px;justify-content:flex-start;align-items:center}
+#rankRows .rankrow .stick,#allRows .rankrow .stick,#specialRows .rankrow .stick{width:55px;height:91px;flex:none}
+#rankRows .rankrow .info,#allRows .rankrow .info,#specialRows .rankrow .info{min-width:0;overflow-wrap:break-word}
+#rankRows .rankrow .name,#allRows .rankrow .name,#specialRows .rankrow .name{font-weight:650;font-size:1.03rem;line-height:1.25}
+#rankRows .rankrow .detail,#allRows .rankrow .detail,#specialRows .rankrow .detail{margin-top:3px;color:#b9bec7;font-size:.86rem;line-height:1.3}
 .duel{display:flex;align-items:center;gap:18px}
 .duel .stick{width:76px;height:127px}
 .duel .caption{font-size:.8rem;color:#acb3bc;margin-bottom:8px}
 .duel .vs{color:#a1a8b0;font-size:.8rem}
 footer{margin-top:46px;border-top:1px solid #3c4046;padding-top:16px;color:#999fa8;font-size:.82rem}
 @media(max-width:1050px){
- #rankRows,#allRows{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
- .rankrow .stick,#allRows .rankrow .stick{width:60px;height:100px}
- .rankrow .hand,#allRows .rankrow .hand{width:125px}
+ #rankRows,#allRows,#specialRows{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:640px){
  main{padding:16px 15px 40px}
  nav{gap:18px}
- #rankRows,#allRows{grid-template-columns:minmax(0,1fr)}
- .rankrow,#allRows .rankrow{min-height:125px;padding:11px 2px;gap:12px}
- .rankrow .stick,#allRows .rankrow .stick{width:56px;height:94px}
- .rankrow .hand,#allRows .rankrow .hand{width:116px}
- .rankrow .name{font-size:1.02rem}
- .rankrow .detail{font-size:.88rem}
- .stage{min-height:310px}
- .stage .stick{width:103px;height:173px}
- .duel{gap:8px}
- .duel .stick{width:51px;height:86px}
+ #rankRows,#allRows,#specialRows{grid-template-columns:minmax(0,1fr)}
+ #rankRows .rankrow,#allRows .rankrow,#specialRows .rankrow{padding:8px 2px;gap:12px}
+ #rankRows .rankrow .hand,#allRows .rankrow .hand,#specialRows .rankrow .hand{width:119px;gap:5px}
+ #rankRows .rankrow .stick,#allRows .rankrow .stick,#specialRows .rankrow .stick{width:57px;height:95px}
+ .stage{min-height:310px}.stage .stick{width:103px;height:173px}
+ .duel{gap:8px}.duel .stick{width:51px;height:86px}
  .answers{gap:5px 18px}
-}
-
-/* Large illustrated layouts for catalogue and special hands */
-#allRows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px}
-#allRows .rankrow{min-height:180px;padding:22px 4px;gap:18px}
-#allRows .rankrow .hand{width:162px;gap:8px;flex:none}
-#allRows .rankrow .stick{width:77px;height:130px}
-#allRows .rankrow .name{font-size:1.15rem;line-height:1.3}
-#allRows .rankrow .detail{font-size:.96rem;line-height:1.4}
-#specialRows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px}
-#specialRows .rankrow{min-width:0;min-height:190px;padding:22px 4px;gap:18px}
-#specialRows .rankrow .hand{width:166px;gap:8px;flex:none}
-#specialRows .rankrow .stick{width:79px;height:134px}
-#specialRows .rankrow .name{font-size:1.2rem;line-height:1.3}
-#specialRows .rankrow .detail{font-size:.98rem;line-height:1.45}
-@media(max-width:780px){
- #allRows,#specialRows{grid-template-columns:minmax(0,1fr)}
- #allRows .rankrow,#specialRows .rankrow{min-height:156px;padding:16px 2px;gap:15px}
- #allRows .rankrow .hand,#specialRows .rankrow .hand{width:137px;gap:5px}
- #allRows .rankrow .stick,#specialRows .rankrow .stick{width:66px;height:112px}
-}
-@media(max-width:390px){
- #allRows .rankrow .hand,#specialRows .rankrow .hand{width:119px;gap:5px}
- #allRows .rankrow .stick,#specialRows .rankrow .stick{width:57px;height:98px}
- #allRows .rankrow .name,#specialRows .rankrow .name{font-size:1.08rem}
- #allRows .rankrow .detail,#specialRows .rankrow .detail{font-size:.91rem}
-}
-
-/* Compact list rhythm — retain full-size stick artwork */
-#rankRows .rankrow,#allRows .rankrow,#specialRows .rankrow{
-  min-height:0;
-  padding-top:8px;
-  padding-bottom:8px;
-  gap:10px;
-}
-#rankRows,#allRows,#specialRows{row-gap:0}
-#rankRows .rankrow .hand,#allRows .rankrow .hand,#specialRows .rankrow .hand{align-self:center}
-#rankRows .rankrow .detail,#allRows .rankrow .detail,#specialRows .rankrow .detail{margin-top:2px}
-@media(max-width:780px){
- #rankRows .rankrow,#allRows .rankrow,#specialRows .rankrow{
-   min-height:0;
-   padding-top:8px;
-   padding-bottom:8px;
- }
 }
 </style></head><body><main><header><h1>Duo Academy</h1><p>Crimson Desert · Learn the hands and practise recognising them.</p></header>
 <nav aria-label="Site sections"><button class="active" data-page="practice">Practice</button><button data-page="rankings">Rankings</button><button data-page="catalogue">All combinations</button><button data-page="special">Special hands</button></nav>
