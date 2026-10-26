@@ -83,9 +83,36 @@ footer{margin-top:46px;border-top:1px solid #3c4046;padding-top:16px;color:#999f
 #practice .answers button.correct{background:#203a2c;border-color:#56866a;color:#a9e5bd}
 #practice .answers button.wrong{background:#3b2529;border-color:#a46169;color:#f2b1b8;text-decoration:none}
 @media(max-width:640px){#practice .answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#practice .answers button{min-width:0;font-size:1rem;min-height:48px;padding:9px 10px}}
-</style></head><body><main><header><h1>Duo Academy</h1><p>Crimson Desert · Learn the hands and practise recognising them.</p></header>
-<nav aria-label="Site sections"><button class="active" data-page="practice">Practice</button><button data-page="rankings">Rankings</button><button data-page="catalogue">All combinations</button><button data-page="special">Special hands</button></nav>
-<section id="practice"><div class="controls"><label>Mode<select id="mode"><option value="name">Identify hand</option><option value="duel">Which hand wins?</option><option value="points">Calculate points</option></select></label><label>Focus<select id="focus"><option value="all">All standard hands</option><option value="basics">Pairs & points</option><option value="named">Named hands</option></select></label></div><div class="stats"><span>Correct<strong id="correct">0</strong></span><span>Questions<strong id="attempted">0</strong></span><span>Accuracy<strong id="accuracy">—</strong></span><span>Streak<strong id="streak">0</strong></span></div><div class="stage"><div class="prompt" id="prompt"></div><div id="visual"></div></div><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="actions"><button id="next" class="next" hidden>Next hand →</button><button id="reset">Reset score</button></div></section>
+
+/* Rules page uses the same flat, compact design */
+#rules{max-width:880px}
+#rules h2{font-size:1.24rem;margin:8px 0 12px}
+#rules h2:not(:first-child){margin-top:28px}
+#rules h3{font-size:1.03rem;margin:0 0 5px}
+#rules p{font-size:.96rem}
+.rule-guide{border-top:1px solid #3b3f45}
+.guide-item{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;border-bottom:1px solid #3b3f45;padding:17px 0}
+.guide-item p{margin:3px 0 0}
+.guide-count{color:#8f979f;font-size:.8rem;font-weight:600;padding-top:3px}
+.example-hand{display:flex;justify-content:flex-start;margin:16px 0 2px}
+.example-hand .stick{width:58px;height:96px}
+.rules-tip{border-left:2px solid #777e88;padding-left:15px}
+@media(max-width:640px){.guide-item{grid-template-columns:30px minmax(0,1fr);gap:9px;padding:14px 0}#rules p{font-size:.94rem}}
+</style></head><body><main><header><h1>Duo Academy</h1><p>Learn Duo, the two-stick gambling minigame in Crimson Desert. Understand the hands, then test yourself.</p></header>
+<nav aria-label="Site sections"><button class="active" data-page="rules">Rules</button><button data-page="rankings">Rankings</button><button data-page="special">Special hands</button><button data-page="catalogue">All combinations</button><button data-page="practice">Practice</button></nav>
+<section id="rules">
+<h2>How to play Duo</h2>
+<p>Duo is a gambling game in <em>Crimson Desert</em>. Each player receives two numbered sticks. Your aim is to finish the round with the highest-ranked hand and win the pot.</p>
+<div class="rule-guide">
+<div class="guide-item"><div class="guide-count">01</div><div><h3>Read the sticks</h3><p>Each stick has a number shown using tally marks. The sticks appear in ochre-gold and red, and the colours matter for certain special hands.</p></div></div>
+<div class="guide-item"><div class="guide-count">02</div><div><h3>Check your hand</h3><p>Strong combinations beat ordinary point totals. Learn the order: premium combinations, matching pairs, named combinations, then ordinary points.</p><div id="exampleHand" class="example-hand"></div></div></div>
+<div class="guide-item"><div class="guide-count">03</div><div><h3>Decide whether to bet</h3><p>Compare your hand with the sticks you can see opponents holding. Depending on the betting round, you can check, call, raise, or fold.</p></div></div>
+<div class="guide-item"><div class="guide-count">04</div><div><h3>Reveal and compare</h3><p>When the betting ends, the best-ranked hand wins. Unusual special combinations can change the normal result or cause a rematch.</p></div></div>
+</div>
+<h2>How ordinary points work</h2><p>Add the two numbers and keep the last digit. For example, <strong>7 + 8 = 15</strong>, so that hand is worth <strong>5 points</strong>. But check for pairs or named hands <em>before</em> calculating points.</p>
+<p class="rules-tip">Use <strong>Rankings</strong> as your quick-reference chart, <strong>Special Hands</strong> for exceptions, <strong>All Combinations</strong> to look up a pairing, and <strong>Practice</strong> to test yourself.</p>
+</section>
+<section id="practice" hidden><div class="controls"><label>Mode<select id="mode"><option value="name">Identify hand</option><option value="duel">Which hand wins?</option><option value="points">Calculate points</option></select></label><label>Focus<select id="focus"><option value="all">All standard hands</option><option value="basics">Pairs & points</option><option value="named">Named hands</option></select></label></div><div class="stats"><span>Correct<strong id="correct">0</strong></span><span>Questions<strong id="attempted">0</strong></span><span>Accuracy<strong id="accuracy">—</strong></span><span>Streak<strong id="streak">0</strong></span></div><div class="stage"><div class="prompt" id="prompt"></div><div id="visual"></div></div><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="actions"><button id="next" class="next" hidden>Next hand →</button><button id="reset">Reset score</button></div></section>
 <section id="rankings" hidden><h2>All ranked hands</h2><p class="sectionnote">Scroll down to see every rank. Illustrated pairs and named combinations are listed individually, followed by all ordinary point ranks.</p><div id="rankRows"></div></section>
 <section id="catalogue" hidden><h2>All 55 number combinations</h2><p class="sectionnote">Each unordered pairing of 1–10. Colour-dependent special combinations can override these base values.</p><div class="catalog" id="allRows"></div></section>
 <section id="special" hidden><h2>Conditional special hands</h2><p class="sectionnote">Special rules depend on the colours of the sticks and the opposing hand. These are excluded from the automated practice questions.</p><div id="specialRows"></div></section>
@@ -104,7 +131,7 @@ function row(h,name,desc,colors,rank){return '<div class="rankrow">'+'<div class
 let ranking=[],k=1;ranking.push(row([3,8],'Prime Pair','Red 3 + red 8 · premium combination',['red','red'],k++));ranking.push(row([1,3],'Superior Pair','Red 1 + red 3, or red 1 + red 8',['red','red'],k++));for(let a=10;a>=1;a--)ranking.push(row([a,a],cls([a,a]).name,'Matching pair',null,k++));for(let x of named)ranking.push(row([x[0],x[1]],x[2],'Named combination',null,k++));for(let p=9;p>=0;p--){let h=safe.find(x=>cls(x).kind==='points'&&cls(x).points===p);if(h)ranking.push(row(h,cls(h).name,'Ordinary point rank',null,k++))}$('rankRows').innerHTML=ranking.join('');
 $('allRows').innerHTML=all.map(h=>row(h,cls(h).name,h.join(' + ')+(exceptions.has(h.join('-'))?' · special condition':''))).join('');
 $('specialRows').innerHTML=[['Warden',[4,9],['yellow','red'],'Conditional rematch; otherwise 3 points.'],['High Warden',[4,9],['red','red'],'Red 4 + red 9; conditional rematch.'],['Judge',[3,7],['yellow','red'],'Counters many ordinary pairs; otherwise zero.'],['Executor',[4,7],['red','red'],'Red 4 + red 7; counters Superior Pair.']].map(x=>row(x[1],x[0],x[3],x[2])).join('');
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x===b));['practice','rankings','catalogue','special'].forEach(id=>$(id).hidden=id!==b.dataset.page)}));
+const sections=['rules','rankings','special','catalogue','practice'];function activatePage(id){if(!sections.includes(id))id='rules';document.querySelectorAll('[data-page]').forEach(x=>{const active=x.dataset.page===id;x.classList.toggle('active',active);x.setAttribute('aria-current',active?'page':'false')});sections.forEach(page=>$(page).hidden=page!==id);try{localStorage.setItem('duoAcademyLastTab',id)}catch(e){}}document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>activatePage(b.dataset.page)));let savedPage='rules';try{savedPage=localStorage.getItem('duoAcademyLastTab')||'rules'}catch(e){}activatePage(savedPage);$('exampleHand').innerHTML=hand([7,8]);
 let stats={correct:0,attempted:0,streak:0};try{let x=JSON.parse(localStorage.getItem('duoAcademyMobile'));if(x&&Number.isInteger(x.attempted))stats=x}catch(e){}let active,answered=false;
 function update(){for(let k of ['correct','attempted','streak'])$(k).textContent=stats[k];$('accuracy').textContent=stats.attempted?Math.round(100*stats.correct/stats.attempted)+'%':'—'}
 function pool(){let f=$('focus').value;return f==='named'?safe.filter(h=>cls(h).kind==='named'):f==='basics'?safe.filter(h=>cls(h).kind!=='named'):safe}
