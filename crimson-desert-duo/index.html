@@ -66,6 +66,15 @@ footer{margin-top:46px;border-top:1px solid #3c4046;padding-top:16px;color:#999f
 #rankRows .rankrow .stick,#allRows .rankrow .stick,#specialRows .rankrow .stick{width:55px;height:91px}
 @media(max-width:1050px){#rankRows,#allRows,#specialRows{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){#rankRows,#allRows,#specialRows{grid-template-columns:minmax(0,1fr)}#rankRows>.rankrow,#allRows>.rankrow,#specialRows>.rankrow{grid-template-columns:18px 119px minmax(0,1fr)}#rankRows .rankrow .hand,#allRows .rankrow .hand,#specialRows .rankrow .hand{width:119px}#rankRows .rankrow .stick,#allRows .rankrow .stick,#specialRows .rankrow .stick{width:57px;height:95px}}
+
+/* Quiz answer controls: intentional flat buttons */
+#practice .answers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:min(100%,940px);margin:10px auto 18px}
+#practice .answers button{display:flex;align-items:center;justify-content:center;min-width:0;min-height:64px;padding:12px 13px;border:1px solid #555a60;border-radius:6px;background:#2b2e33;color:#f1f2f4;font-size:1.22rem;font-weight:550;line-height:1.25;text-align:center;text-decoration:none}
+#practice .answers button:hover:not(:disabled){background:#3a3e43;border-color:#858b94;text-decoration:none}
+#practice .answers button.correct{background:#19372a;border-color:#69bc8d;color:#bcf0d2}
+#practice .answers button.wrong{background:#40252a;border-color:#d08389;color:#ffdadd;text-decoration:none}
+#practice .answers button:focus-visible{outline:2px solid white;outline-offset:3px}
+@media(max-width:750px){#practice .answers{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}#practice .answers button{font-size:1.12rem;min-height:65px}}
 </style></head><body><main><header><h1>Duo Academy</h1><p>Crimson Desert · Learn the hands and practise recognising them.</p></header>
 <nav aria-label="Site sections"><button class="active" data-page="practice">Practice</button><button data-page="rankings">Rankings</button><button data-page="catalogue">All combinations</button><button data-page="special">Special hands</button></nav>
 <section id="practice"><div class="controls"><label>Mode<select id="mode"><option value="name">Identify hand</option><option value="duel">Which hand wins?</option><option value="points">Calculate points</option></select></label><label>Focus<select id="focus"><option value="all">All standard hands</option><option value="basics">Pairs & points</option><option value="named">Named hands</option></select></label></div><div class="stats"><span>Correct<strong id="correct">0</strong></span><span>Questions<strong id="attempted">0</strong></span><span>Accuracy<strong id="accuracy">—</strong></span><span>Streak<strong id="streak">0</strong></span></div><div class="stage"><div class="prompt" id="prompt"></div><div id="visual"></div></div><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="actions"><button id="next" class="next" hidden>Next hand →</button><button id="reset">Reset score</button></div></section>
