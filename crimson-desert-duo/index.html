@@ -75,6 +75,14 @@ footer{margin-top:46px;border-top:1px solid #3c4046;padding-top:16px;color:#999f
 #practice .answers button.wrong{background:#40252a;border-color:#d08389;color:#ffdadd;text-decoration:none}
 #practice .answers button:focus-visible{outline:2px solid white;outline-offset:3px}
 @media(max-width:750px){#practice .answers{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}#practice .answers button{font-size:1.12rem;min-height:65px}}
+
+/* Refined answer choices — compact, restrained, no cards */
+#practice .answers{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 12px;width:min(100%,760px);margin:4px auto 12px}
+#practice .answers button{flex:0 1 auto;min-width:125px;min-height:45px;padding:9px 16px;background:#24272b;border:1px solid #3a3e43;border-radius:3px;color:#e8eaed;font-size:1.02rem;font-weight:500;line-height:1.3;text-align:center}
+#practice .answers button:hover:not(:disabled){background:#30343a;border-color:#737980;text-decoration:none}
+#practice .answers button.correct{background:#203a2c;border-color:#56866a;color:#a9e5bd}
+#practice .answers button.wrong{background:#3b2529;border-color:#a46169;color:#f2b1b8;text-decoration:none}
+@media(max-width:640px){#practice .answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#practice .answers button{min-width:0;font-size:1rem;min-height:48px;padding:9px 10px}}
 </style></head><body><main><header><h1>Duo Academy</h1><p>Crimson Desert · Learn the hands and practise recognising them.</p></header>
 <nav aria-label="Site sections"><button class="active" data-page="practice">Practice</button><button data-page="rankings">Rankings</button><button data-page="catalogue">All combinations</button><button data-page="special">Special hands</button></nav>
 <section id="practice"><div class="controls"><label>Mode<select id="mode"><option value="name">Identify hand</option><option value="duel">Which hand wins?</option><option value="points">Calculate points</option></select></label><label>Focus<select id="focus"><option value="all">All standard hands</option><option value="basics">Pairs & points</option><option value="named">Named hands</option></select></label></div><div class="stats"><span>Correct<strong id="correct">0</strong></span><span>Questions<strong id="attempted">0</strong></span><span>Accuracy<strong id="accuracy">—</strong></span><span>Streak<strong id="streak">0</strong></span></div><div class="stage"><div class="prompt" id="prompt"></div><div id="visual"></div></div><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="actions"><button id="next" class="next" hidden>Next hand →</button><button id="reset">Reset score</button></div></section>
