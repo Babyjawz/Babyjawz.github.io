@@ -1,292 +1,36 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Crimson Desert · Duo Academy — Clean practice
-<style>
-:root{color-scheme:dark;--bg:#11151b;--panel:#1e2733;--line:#445265;--gold:#f0cd8b;--text:#f4f1e9;--sub:#b9c2ce;--ok:#64dba3;--bad:#ff9eaa}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#2b303e,#11151b 65%);color:var(--text);font:16px/1.5 system-ui,"Segoe UI",sans-serif}main{max-width:1050px;margin:auto;padding:32px 18px 90px}h1{font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.08;margin:14px 0}h2{margin:0 0 14px}h3{color:var(--gold);margin:19px 0 8px}p{color:var(--sub)}strong{color:var(--text)}.eyebrow{color:var(--gold);font-size:.78rem;font-weight:800;letter-spacing:.15em}.panel{border:1px solid var(--line);background:linear-gradient(145deg,#202b39,#19212b);padding:22px;border-radius:17px;margin-top:20px}.tabs,.buttons,.stats,.settings{display:flex;flex-wrap:wrap;gap:9px}.tabs{margin-top:25px}button,select{color:var(--text);background:#303d4f;border:1px solid #67798f;border-radius:10px;padding:11px 14px;font:inherit;cursor:pointer}button:hover{background:#45546a}button.active,button.primary{background:var(--gold);color:#171c23;border-color:var(--gold);font-weight:750}button:disabled{cursor:default;opacity:.8}button:focus-visible,select:focus-visible{outline:3px solid #ffda8a}.stats>div{background:#2b3644;border-radius:10px;padding:10px 14px;min-width:105px;flex:1;color:var(--sub)}.stats strong{display:block;font-size:1.5rem;color:var(--gold)}label{display:block;margin:9px 0 5px;color:var(--sub)}.settings>div{flex:1;min-width:175px}.settings select{width:100%}.hand{display:flex;justify-content:center;gap:13px;margin:17px auto}.tile{width:76px;height:107px;border-radius:10px;border:2px solid #afbdc9;background:linear-gradient(135deg,#415569,#273649);display:flex;justify-content:center;align-items:center;font-size:2.4rem;font-weight:800;box-shadow:inset 0 0 0 4px #ffffff09}.tile.red{border-color:#e0a09e;background:linear-gradient(130deg,#744551,#472c3b)}.tile.yellow{border-color:#e8d08c;background:linear-gradient(130deg,#71613c,#423a2a)}.tile small{font-size:.6rem}.question{text-align:center;margin:22px 0}.question h2{font-size:1.15rem;color:var(--sub)}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}.choices button{min-height:58px}.choices .correct{border-color:var(--ok);background:#225943}.choices .wrong{border-color:var(--bad);background:#66323d}.feedback{border:1px solid #627184;background:#2d3949;padding:15px;border-radius:12px;margin:14px 0}.rank-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.rank-grid>div{border:1px solid var(--line);background:#2c3745;border-radius:10px;padding:12px}.rank-grid span{color:var(--gold);font-weight:750}#duel{display:flex;justify-content:space-around;align-items:center;gap:9px;flex-wrap:wrap}.duelSide{text-align:center;min-width:145px}.duelSide .tile{width:56px;height:86px;font-size:1.75rem}.duelSide .hand{gap:7px}table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #485463;padding:10px}th{color:var(--gold)}a{color:#b9dcff}.subtle{font-size:.86rem;color:var(--sub)}.warn{border-left:3px solid #e9c480;padding:9px 14px;background:#ffffff08}footer{color:var(--sub);font-size:.82rem;margin-top:35px}#catalogCount{color:var(--gold)}@media(max-width:460px){.panel{padding:14px}.tile{width:65px;height:96px}.duelSide .tile{width:48px;height:72px}}@media print{body{background:#fff;color:#000}.panel,.rank-grid>div{background:white;color:#000;box-shadow:none}.tabs,#training{display:none}}
-
-:root{--bg:#120d0b;--panel:#231914;--line:#5a4030;--gold:#e6b96f;--text:#f8ead3;--sub:#cfb99b;--ok:#78dda9;--bad:#ff9295}
-body{background:radial-gradient(ellipse at 50% -10%,#4b2b1b,#120d0b 58%,#0b0807);color:var(--text)}
-h1,h2,h3{font-family:Georgia,'Times New Roman',serif}
-h1{font-size:clamp(2.4rem,6vw,4.4rem)}
-main{max-width:1100px}
-.panel{background:linear-gradient(145deg,#302018,#1b130f);box-shadow:0 16px 45px #0007;border-color:#66452d;border-radius:22px}
-button,select{background:#332219;border-color:#75563f;color:#f8e5c5}
-button:hover{background:#513523}
-button.active,button.primary{background:linear-gradient(#ecc586,#ba813c);color:#291b12}
-.stats>div,.rank-grid>div{background:#241813;border-color:#604331}
-.feedback{background:#312117;border-color:#785738}
-.question{background:radial-gradient(ellipse at center,#402719,#1b120e 70%);border:1px solid #61432e;padding:18px;border-radius:18px}
-.choices button{background:linear-gradient(#392820,#241911)}
-.choices .correct{background:#26543c}.choices .wrong{background:#6d3334}
-.tile{position:relative;width:72px;height:165px;border:2px solid #5e3c23;border-radius:15px;overflow:hidden;background:linear-gradient(95deg,#edd78c,#c6a355 48%,#947237);transform:rotate(var(--r,0deg));box-shadow:3px 9px 15px #0007,inset -7px 0 9px #0002;display:flex;flex-direction:column;justify-content:center;gap:12px;font-size:1.05rem;color:#3e2410;text-shadow:0 1px #fff5}
-.tile.red{background:linear-gradient(95deg,#e38e81,#b24b43 48%,#772c29);border-color:#8b3c33}
-.tile.yellow{background:linear-gradient(95deg,#edd78c,#c6a355 48%,#947237);border-color:#82632e}
-.tile:before{content:'';position:absolute;inset:7px;border:1px solid #ffffff39;border-radius:10px;pointer-events:none}
-.tile .numeral{position:absolute;top:8px;left:9px;font:700 16px Georgia,serif}
-.tile .tallies{display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:6px;width:43px;min-height:85px;margin:auto}
-.tile .tally{display:inline-block;width:5px;height:33px;border-radius:4px;background:#3b2215;box-shadow:1px 1px #ffffff33}
-.tile .five{display:block;position:relative;width:37px;height:37px;background:repeating-linear-gradient(90deg,#3b2215 0 4px,transparent 4px 10px);border-radius:2px}
-.tile .five:after{content:'';position:absolute;width:45px;height:5px;top:16px;left:-4px;transform:rotate(-37deg);background:#3b2215;border-radius:4px}
-.duelSide .tile{width:60px;height:122px;font-size:1rem}
-.duelSide .tile .tallies{transform:scale(.75)}
-@media(max-width:460px){.tile{width:62px;height:140px}.tile .tallies{transform:scale(.8)}.duelSide .tile{width:48px;height:105px}.duelSide .tile .tallies{transform:scale(.6)}}
-
-/* Duo illustrated sticks v3.1 */
-.tile{width:70px;height:150px;flex-shrink:0;border-radius:12px;background:linear-gradient(100deg,#eed58f 0%,#dcb967 30%,#ba9141 80%,#8e692c 100%);border:2px solid #78572b;box-shadow:3px 7px 14px #0008,inset 2px 1px 2px #fff7,inset -6px 0 6px #48281240;gap:3px}
-.tile.yellow{background:linear-gradient(100deg,#f4dfa2,#d6af58 35%,#b38a38 78%,#79582b)}
-.tile.red{background:linear-gradient(100deg,#e6a096,#bd5149 38%,#963831 78%,#61231f);border-color:#6b2926}
-.tile .numeral{position:absolute;top:7px;left:9px;font-size:15px}
-.tile .tallies{display:flex;flex-wrap:wrap;align-content:center;justify-content:center;align-items:center;gap:3px 6px;width:42px;height:95px;margin:auto}
-.tile .tally{display:block;height:27px;width:5px;border-radius:3px;background:#4c2d17}
-.tile .five{display:block;position:relative;width:38px;height:27px;background:repeating-linear-gradient(90deg,#4c2d17 0 4px,transparent 4px 9px)}
-.tile .five:after{content:'';position:absolute;left:-2px;top:12px;width:42px;height:5px;border-radius:3px;transform:rotate(-25deg);background:#4c2d17}
-.rank-grid .hand{display:flex;justify-content:center;gap:7px;margin:9px 0}
-.rank-grid .tile{width:53px;height:103px;transform:none!important}
-.rank-grid .tile .tallies{transform:scale(.7)}
-.rank-grid .tile .numeral{font-size:12px;top:4px;left:5px}
-.rank-grid>div{text-align:center;background:linear-gradient(140deg,#302219,#1b1510);border:1px solid #765233;min-width:0}
-.rank-grid span{color:#edc687}
-.rank-grid .tile span{color:#4c2d17}
-@media(max-width:460px){.rank-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rank-grid .tile{width:48px;height:94px}.rank-grid .tile .tallies{transform:scale(.63)}}
-
-/* v3.2 illustrated in-game tally-sticks */
-body{background:radial-gradient(ellipse at 50% 0,#272021,#101115 65%);color:#eee5d4}
-.panel{background:linear-gradient(145deg,#242125,#15171c);border-color:#514344}
-h1,h2,h3{font-family:Georgia,'Times New Roman',serif}
-.tile,.rank-grid .tile{display:inline-flex;position:relative;width:57px;height:99px;border-radius:7px 7px 10px 10px;border:1px solid #7e613d;background:linear-gradient(160deg,#d6ac4b 0 43%,#a53230 44% 100%);box-shadow:2px 5px 9px #0009,inset 3px 0 4px #fff2;transform:none!important;align-items:center;justify-content:center;overflow:hidden;color:#fcf1d5}
-.tile.red,.rank-grid .tile.red{background:linear-gradient(145deg,#d04e49,#8e2727 75%)}
-.tile.yellow,.rank-grid .tile.yellow{background:linear-gradient(160deg,#e5be55,#bd8737)}
-.tile .numeral{display:none}.tile .tallies{display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:4px;width:43px;height:auto;min-height:47px;margin:0;transform:none;filter:drop-shadow(1px 1px 1px #3b1815);z-index:1}
-.tile .tally{display:inline-block;width:4px;height:24px;border-radius:2px;background:#fff6e7;box-shadow:1px 0 #fff5}
-.tile .five{position:relative;display:block;width:33px;height:26px;background:repeating-linear-gradient(90deg,#fff8e9 0 4px, transparent 4px 8px)}
-.tile .five:after{content:'';position:absolute;background:#fff8e9;width:39px;height:4px;left:-3px;top:11px;transform:rotate(-33deg);border-radius:3px}
-.hand{gap:7px}
-.rank-grid>div{background:#1d1c20;border-color:#514344}
-.rank-grid .hand{margin:8px 0}
-.rank-grid .tile{width:46px;height:75px}
-.rank-grid .tile .tallies{transform:scale(.75)}
-#premiums .hand,#specialGuide .hand{justify-content:center}
-#specialGuide>div{min-width:190px}
-
-/* v3.3 restrained black interface; stick artwork deliberately untouched */
-:root{color-scheme:dark;--bg:#090b0e;--panel:#15181d;--line:#303741;--gold:#e3e6ec;--text:#f5f6f8;--sub:#aeb5c0;--ok:#72d5a0;--bad:#f38f99}
-html,body{background:#090b0e!important;color:#f5f6f8!important}
-body{background:#090b0e!important}
-h1,h2,h3{font-family:Inter,system-ui,"Segoe UI",Arial,sans-serif!important;letter-spacing:-.025em}
-h1 span,.eyebrow{color:#eef0f3!important}
-.eyebrow{letter-spacing:.12em}
-.panel{background:#15181d!important;border:1px solid #333943!important;box-shadow:none!important;border-radius:15px}
-button,select{background:#20252d!important;color:#e9ebee!important;border:1px solid #414956!important;box-shadow:none!important;border-radius:9px}
-button:hover{background:#2b323d!important}
-button.active,button.primary{background:#e4e7eb!important;color:#111317!important;border-color:#e4e7eb!important}
-.stats>div{background:#1d2229!important;border:1px solid #2c343e!important;border-radius:10px}
-.stats strong{color:#f0f2f5!important}
-.question{background:#101318!important;border:1px solid #303741!important;border-radius:12px}
-.choices button{background:#20252d!important;border:1px solid #414956!important}
-.choices .correct{background:#173c2b!important;border-color:#50ad7e!important;color:#dff7e9!important}
-.choices .wrong{background:#45252c!important;border-color:#c86e7b!important;color:#fff!important}
-.feedback{background:#1b2128!important;border:1px solid #3a4654!important}
-.rank-grid>div{background:#191d23!important;border-color:#343c46!important;border-radius:12px}
-.rank-grid>div>span{color:#d5dae2!important}
-.warn{background:#1b2027!important;border-left-color:#77818f!important}
-th{color:#e1e5eb!important}
-td,th{border-bottom-color:#353c45!important}
-a{color:#b8cbed!important}
-
-/* v3.4 rough, short tally pieces based on supplied game crop */
-.tile,.rank-grid .tile,.duelSide .tile{
-width:61px!important;height:77px!important;border:0!important;border-radius:7px 9px 5px 8px!important;
-clip-path:polygon(5% 3%,19% 0%,43% 2%,67% 0%,91% 3%,99% 12%,97% 35%,100% 58%,96% 89%,86% 99%,61% 96%,37% 100%,12% 96%,0% 87%,2% 60%,0% 35%,2% 14%)!important;
-box-shadow:none!important;
-background:#b98b2c!important;transform:none!important;
-filter:drop-shadow(2px 3px 1px #0009)
-}
-.tile.red,.rank-grid .tile.red{background:#a53432!important}
-.tile.yellow,.rank-grid .tile.yellow{background:#b98b2c!important}
-.tile.mixed,.rank-grid .tile.mixed{background:linear-gradient(150deg,#b98b2c 0 48%,#a53432 48% 100%)!important}
-.tile:before,.tile:after{display:none!important}
-.tile .tallies,.rank-grid .tile .tallies,.duelSide .tile .tallies{
-width:45px!important;height:55px!important;min-height:0!important;
-display:flex!important;flex-wrap:wrap!important;align-items:center!important;align-content:center!important;justify-content:center!important;gap:3px!important;
-filter:none!important;transform:none!important;
-}
-.tile .tally,.rank-grid .tile .tally{width:3px!important;height:28px!important;border-radius:1px!important;background:#fff6de!important;box-shadow:none!important}
-.tile .five,.rank-grid .tile .five{width:36px!important;height:27px!important;background:repeating-linear-gradient(90deg,#fff6de 0 3px,transparent 3px 8px)!important}
-.tile .five:after,.rank-grid .tile .five:after{background:#fff6de!important;width:40px!important;height:3px!important;top:12px!important;left:-2px!important;transform:rotate(-38deg)!important}
-.hand{gap:5px!important}
-
-/* v3.5 flat visual system: no gradients or shading */
-:root{--bg:#08090a!important;--panel:#151719!important;--line:#33363a!important;--gold:#f4f4f4!important;--text:#f3f4f5!important;--sub:#acb0b7!important}
-html,body,body{background:#090a0c!important;color:#f3f4f5!important;background-image:none!important}
-main,.panel,.question,.feedback,.warn,.stats>div,.rank-grid>div,.rank-grid .rankCard,.choices button,button,select,table,th,td{background-image:none!important;box-shadow:none!important;filter:none!important;text-shadow:none!important}
-.panel{background:#15171a!important;border:1px solid #313438!important;border-radius:12px!important}
-.question{background:#111315!important;border:1px solid #292c30!important}
-.stats>div{background:#202226!important;border:1px solid #303338!important}
-button,select,.choices button{background:#24262a!important;border:1px solid #414449!important;color:#f0f0f1!important;border-radius:7px!important}
-button.active,button.primary{background:#e7e7e9!important;border-color:#e7e7e9!important;color:#111214!important}
-button:hover{background:#33363b!important}
-.rank-grid>div{background:#1a1c1f!important;border:1px solid #33363a!important}
-.feedback{background:#1b1e21!important;border-color:#373b3f!important}
-.choices .correct{background:#1c4b34!important;border-color:#397951!important}
-.choices .wrong{background:#542429!important;border-color:#9e4e56!important}
-h1,h2,h3{color:#f3f4f5!important}
-.eyebrow,h1 span,.rank-grid>div>span{color:#e9eaed!important}
-.tile,.rank-grid .tile,.duelSide .tile{background:#b48b30!important;border:0!important;box-shadow:none!important;filter:none!important;text-shadow:none!important;border-radius:5px!important;clip-path:polygon(7% 1%,30% 0,54% 2%,76% 0,96% 4%,100% 19%,98% 57%,100% 91%,90% 98%,64% 100%,33% 98%,10% 100%,1% 91%,2% 52%,0 18%)!important}
-.tile.yellow,.rank-grid .tile.yellow{background:#b48b30!important}
-.tile.red,.rank-grid .tile.red{background:#a32d31!important}
-.tile.mixed,.rank-grid .tile.mixed{background:linear-gradient(158deg,#b48b30 0 48%,#a32d31 48% 100%)!important}
-.tile .tally,.tile .five:after{background:#fff9e9!important;box-shadow:none!important}
-.tile .five{background:repeating-linear-gradient(90deg,#fff9e9 0 3px,transparent 3px 8px)!important}
-
-/* v3.6: flat stone-grey game interface + hand-drawn tally sticks */
-html,body,body{background:#18191b!important;background-image:none!important;color:#f0f0ed!important}
-main{max-width:1100px}
-.panel{background:#242629!important;border:1px solid #3b3e42!important;border-radius:8px!important;box-shadow:none!important}
-.question{background:#1d1f22!important;border:1px solid #36393d!important;border-radius:6px!important}
-.stats>div{background:#303236!important;border:1px solid #3d4045!important;border-radius:5px!important}
-button,select,.choices button{background:#323438!important;color:#efefed!important;border:1px solid #53565b!important;border-radius:5px!important}
-button.active,button.primary{background:#d4d4d1!important;color:#151515!important;border-color:#d4d4d1!important}
-button:hover{background:#414449!important}
-.rank-grid>div{background:#2c2e31!important;border-color:#42454a!important;border-radius:6px!important}
-.feedback,.warn{background:#2b2d30!important;border-color:#494c50!important}
-.eyebrow,h1 span,h3{color:#f0f0ed!important}
-.duo-stick{display:block;width:53px;height:79px;overflow:visible;flex:none;filter:none!important;box-shadow:none!important;transform:none!important}
-.rank-grid .duo-stick{width:43px;height:65px}
-.duelSide .duo-stick{width:45px;height:69px}
-.hand{gap:3px!important;align-items:center}
-.duo-stick{width:46px!important;height:81px!important;display:block!important;flex:none!important;background:none!important;box-shadow:none!important;filter:none!important;clip-path:none!important;transform:none!important}.rank-grid .duo-stick{width:36px!important;height:65px!important}.duelSide .duo-stick{width:39px!important;height:70px!important}.hand{gap:2px!important} 
-/* v3.9: balanced practice layout, larger sticks, lightweight text answers */
-#training{padding:24px 26px!important}
-#training .question{margin:18px 0 9px!important;padding:26px 12px 23px!important;min-height:240px!important;display:flex;flex-direction:column;justify-content:center;align-items:center;border-color:#35383c!important}
-#training .question h2{font-size:1.15rem!important;font-weight:600!important;margin:0 0 13px!important;color:#e7e9ec!important}
-#training .question .hand{margin:6px 0!important;gap:5px!important}
-#training .question .duo-stick{width:85px!important;height:151px!important}
-#training .choices{display:flex!important;flex-wrap:wrap!important;justify-content:center!important;align-items:stretch!important;gap:8px 22px!important;margin:5px auto 10px!important;max-width:900px!important}
-#training .choices button{min-height:0!important;flex:0 1 auto!important;min-width:112px!important;padding:9px 8px!important;margin:0!important;background:transparent!important;border:1px solid transparent!important;border-bottom:1px solid #555b64!important;border-radius:0!important;color:#d2d7de!important;font-size:1.02rem!important;font-weight:500!important;transition:color .13s,border-color .13s!important}
-#training .choices button:hover:not(:disabled){background:transparent!important;color:#fff!important;border-bottom-color:#f2f3f5!important}
-#training .choices button.correct{background:transparent!important;color:#79dfa6!important;border-bottom-color:#79dfa6!important}
-#training .choices button.wrong{background:transparent!important;color:#f19aa3!important;border-bottom-color:#f19aa3!important}
-#training #duel .duo-stick{width:68px!important;height:121px!important}
-#training .stats>div{padding:10px 13px!important}
-#training .stats strong{font-size:1.3rem!important}
-#training .feedback{margin-top:5px!important}
-#training #reset{padding:7px 10px!important;background:transparent!important;border:0!important;color:#989fa9!important;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:600px){#training{padding:16px!important}#training .question .duo-stick{width:70px!important;height:125px!important}#training .choices{gap:4px 12px!important}#training .choices button{min-width:100px!important;font-size:.95rem!important}}
-
-/* layout v4: authoritative, compact controls and large central hand */
-main>h1{font-size:clamp(2rem,3.8vw,3.5rem)!important;line-height:1.1!important;margin:8px 0!important}
-#training .question{min-height:285px!important;padding:22px 16px!important}
-#training .question .duo-stick{width:107px!important;height:190px!important}
-#training .choices{display:grid!important;grid-template-columns:repeat(2,minmax(0,190px))!important;max-width:405px!important;gap:4px 14px!important;justify-content:center!important;align-items:center!important;margin:6px auto 14px!important}
-#training .choices button{width:100%!important;min-width:0!important;min-height:0!important;padding:11px 4px!important;display:block!important;border:0!important;border-bottom:1px solid #40444a!important;border-radius:0!important;background:none!important;box-shadow:none!important;text-align:center!important;font-size:.99rem!important;font-weight:500!important}
-#training .choices button:hover:not(:disabled){border-bottom-color:#fafafa!important;color:#fff!important}
-#training .choices button.correct{border-bottom-color:#7cdea8!important;color:#7cdea8!important}
-#training .choices button.wrong{border-bottom-color:#ff9a9e!important;color:#ff9a9e!important}
-#training #reset{border:0!important;background:none!important;padding:5px 4px!important;font-size:.85rem!important;color:#929aa4!important}
-@media(max-width:530px){#training .question .duo-stick{width:83px!important;height:147px!important}#training .choices{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
-
-/* Clean practice layout: large visual, plain answer text */
-#training .question{min-height:360px!important;padding:24px 12px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;background:#1b1d20!important;border:0!important;box-shadow:none!important}
-#training .question h2{font-size:1.08rem!important;margin:0 0 18px!important}
-#training .question .duo-stick{width:133px!important;height:232px!important}
-#training .question .hand{gap:10px!important;margin:0!important}
-#training .choices{display:flex!important;flex-wrap:wrap!important;justify-content:center!important;align-items:center!important;gap:12px 28px!important;margin:14px auto!important;max-width:780px!important}
-#training .choices button{display:inline-block!important;flex:0 0 auto!important;width:auto!important;min-width:0!important;min-height:0!important;padding:10px 4px!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;font-weight:500!important;color:#d5d9df!important}
-#training .choices button:hover:not(:disabled){color:#fff!important;background:transparent!important;text-decoration:underline!important;text-underline-offset:5px!important}
-#training .choices button.correct{color:#83d7a4!important;background:transparent!important;text-decoration:underline!important}
-#training .choices button.wrong{color:#ec9099!important;background:transparent!important;text-decoration:line-through!important}
-#training .choices button:focus-visible{outline:2px solid #aeb9c7!important;outline-offset:3px!important}
-#training #reset{background:transparent!important;border:0!important;color:#a2a9b3!important;padding:5px!important}
-@media(max-width:570px){#training .question .duo-stick{width:93px!important;height:168px!important}#training .question{min-height:290px!important}}
-
-/* Flat uncluttered practice redesign */
-html,body,body{background:#17191b!important;background-image:none!important}
-main{max-width:1000px!important}
-main>h1{font-size:clamp(2rem,4vw,3rem)!important;margin:10px 0!important}
-#training,#training.panel{background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important;padding:16px 0!important;border-radius:0!important}
-#training>h2{font-size:1.1rem!important;font-weight:600!important;margin:0 0 10px!important}
-#training .settings{margin:8px 0!important;gap:14px!important;align-items:center!important}
-#training .settings>div{min-width:180px!important}
-#training .settings label{font-size:.8rem!important;margin:0 0 4px!important}
-#training .settings select{padding:7px 10px!important;background:#25282b!important;border:1px solid #3b3f44!important;border-radius:4px!important;color:#eee!important}
-#training .stats{display:flex!important;flex-wrap:wrap!important;gap:24px!important;margin:16px 0!important}
-#training .stats>div{display:flex!important;gap:7px!important;align-items:baseline!important;flex:none!important;min-width:0!important;background:transparent!important;border:0!important;padding:0!important;box-shadow:none!important;border-radius:0!important;color:#8f969f!important;font-size:.78rem!important}
-#training .stats strong{display:inline!important;font-size:.92rem!important;color:#e1e4e7!important;font-weight:600!important}
-#training .question{background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;margin:8px auto 0!important;min-height:345px!important;padding:16px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important}
-#training .question h2{margin:0 0 24px!important;font-size:1rem!important;font-weight:500!important;color:#c4c8ce!important}
-#training .question .hand{gap:12px!important;margin:0!important}
-#training .question .duo-stick{width:145px!important;height:244px!important}
-#training #duel .duo-stick{width:83px!important;height:142px!important}
-#training .choices{display:flex!important;flex-wrap:wrap!important;justify-content:center!important;gap:16px 40px!important;margin:4px auto 14px!important;max-width:800px!important}
-#training .choices button,#training .choices button:hover,#training .choices button:active{appearance:none!important;flex:none!important;width:auto!important;min-width:0!important;min-height:0!important;display:inline-block!important;background:transparent!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:8px 2px!important;color:#c5cbd1!important;font-weight:450!important;font-size:1.04rem!important;text-decoration:none!important}
-#training .choices button:hover:not(:disabled){color:#fff!important;text-decoration:underline!important;text-underline-offset:5px!important}
-#training .choices button.correct{color:#79d8a7!important}
-#training .choices button.wrong{color:#e89a9f!important;text-decoration:line-through!important}
-#training .choices button:focus-visible{outline:1px solid #ddd!important;outline-offset:4px!important}
-#training #reset{background:transparent!important;border:0!important;padding:4px 0!important;color:#989fa8!important;font-size:.8rem!important}
-#training .subtle{font-size:.75rem!important;opacity:.7!important}
-#training .feedback{background:transparent!important;border:0!important;box-shadow:none!important;text-align:center!important}
-@media(max-width:600px){#training .question .duo-stick{width:100px!important;height:170px!important}#training .question{min-height:255px!important}#training .choices{gap:8px 21px!important}#training .choices button{font-size:.97rem!important}}
-</style></head><body><main>
-<div class="eyebrow">FIELD GUIDE · INTERACTIVE TRAINING</div><h1>Crimson Desert<br><span style="color:var(--gold)">Duo Academy</span></h1>
-<p>Tally-stick training for Crimson Desert: recognise carved red and yellow sticks, master hand rankings and compare hands at a glance.</p>
-<div class="tabs" role="tablist"><button data-tab="training" class="active">Practice</button><button data-tab="reference">Rankings</button><button data-tab="catalog">All combinations</button><button data-tab="special">Special rules</button></div>
-<section class="panel" id="training"><h2>Practice arena</h2>
-<div class="settings"><div><label for="mode">Training mode</label><select id="mode"><option value="name">Name this hand</option><option value="duel">Which hand wins?</option><option value="value">Calculate points</option></select></div><div><label for="level">Practice focus</label><select id="level"><option value="basics">Beginner · pairs & points</option><option value="all" selected>All standard hands</option><option value="named">Named hand mastery</option><option value="tricky">Tricky comparisons</option></select></div></div>
-<div class="stats" style="margin-top:16px"><div>Correct<strong id="correct">0</strong></div><div>Attempted<strong id="attempts">0</strong></div><div>Accuracy<strong id="accuracy">—</strong></div><div>Streak<strong id="streak">0</strong></div></div>
-<div class="question" id="question"></div><div class="choices" id="choices"></div><div id="feedback" aria-live="polite"></div>
-<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;margin-top:18px"><button class="primary" id="next" hidden>Next challenge →</button><button id="reset">Reset score</button></div>
-<p class="subtle">Questions are randomised, including the full standard number-pair pool. Special red-card overrides are intentionally excluded from automatic wins until their exact rules can be validated.</p></section>
-<section class="panel" id="reference" hidden><h2>Fast hand reference</h2><p>Based on your in-game View Hands screenshot: Prime Pair → Superior Pair → Ten Pair → regular pairs → six named hands → Perfect Nine → Points → Zero. Special hands can override this order.</p><h3>1. Prime & Superior Pairs</h3><div class="rank-grid" id="premiums"></div><h3>2. Ten Pair & regular Pairs</h3><div class="rank-grid" id="pairs"></div><h3>3. Six named combinations</h3><p>Memorise these exact six, in order. They beat all ordinary points.</p><div class="rank-grid" id="named"></div><h3>4. Ordinary points</h3><div class="rank-grid" id="points"></div><p><strong>Rule:</strong> Add the two stick numbers and use only the final digit. Example: 7 + 8 = 15 → 5 points. Pairs and named combinations take priority.</p><div class="warn"><strong>Perfect Nine:</strong> a nine-point ordinary hand, the strongest of its group.</div></section>
-<section class="panel" id="catalog" hidden><h2>Every numbered pairing</h2><p><strong id="catalogCount"></strong> unordered number pairings, including identical numbers. Select a hand to see how it ranks. The physical 20-stick deck also has red/yellow variants, so colour-specific effects are documented separately.</p><div class="settings"><div><label for="filter">Show category</label><select id="filter"><option value="all">All</option><option value="pair">Pairs</option><option value="named">Named combinations</option><option value="points">Ordinary points</option><option value="conditional">Conditional specials (base value)</option></select></div></div><div class="rank-grid" id="allhands" style="margin-top:15px"></div></section>
-<section class="panel" id="special" hidden><h2>Special Hands — in-game rules</h2><p>Transcribed from the View Hands screenshot you provided. These conditional hands can beat or trigger rematches against otherwise stronger hands.</p><div class="rank-grid" id="specialGuide"></div><div class="warn">The precise physical red/yellow placement matters. The trainer distinguishes fully red pairs from mixed sticks for premium hands.</div></section>
-<footer>Unofficial fan-made guide. Reference reading: <a href="https://www.keengamer.com/articles/guides/crimson-desert-gambling-guide-how-to-win-duo-and-five-card/" target="_blank" rel="noopener">KeenGamer</a>, <a href="https://www.gamespot.com/gallery/crimson-desert-duo-five-card-minigame/2900-7576/" target="_blank" rel="noopener">GameSpot</a>, <a href="https://steamcommunity.com/app/3321460/discussions/0/805721739935986715/" target="_blank" rel="noopener">Community discussion</a>. Scores are saved locally in your browser; no account or tracking.</footer></main>
-<script>
-"use strict";
-const $=id=>document.getElementById(id);
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Duo Academy — Crimson Desert</title><style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#181a1d;color:#f0f1f2}*{box-sizing:border-box}body{margin:0;background:#181a1d}main{max-width:1050px;margin:auto;padding:20px 22px 58px}h1{font-size:clamp(1.8rem,5vw,3.2rem);letter-spacing:-.04em;margin:0 0 4px}p{color:#acb0b7;line-height:1.5;margin:8px 0 18px}header{padding-bottom:14px;border-bottom:1px solid #3b3e43}nav{display:flex;gap:23px;overflow-x:auto;white-space:nowrap;border-bottom:1px solid #3b3e43;margin:17px 0 18px;scrollbar-width:thin}button,select{font:inherit}button{cursor:pointer}nav button{flex:none;background:none;border:0;border-bottom:2px solid transparent;color:#abb0b7;padding:0 0 12px}nav button.active{color:#fff;border-bottom-color:#fff}h2{font-size:1.08rem;font-weight:650;margin:28px 0 10px}h3{font-size:.96rem;font-weight:600;margin:0}.controls{display:flex;flex-wrap:wrap;gap:15px}.controls label{color:#9da3aa;font-size:.8rem}select{display:block;margin-top:6px;padding:10px;background:#282b2f;border:1px solid #45484e;border-radius:3px;color:#fff;min-width:155px}.stats{display:flex;gap:22px;flex-wrap:wrap;color:#9da3a9;font-size:.79rem;margin-top:17px}.stats strong{margin-left:6px;color:#f2f2f2}.stage{min-height:380px;display:flex;justify-content:center;align-items:center;flex-direction:column;text-align:center}.prompt{font-size:1.06rem;color:#c9cdd2;margin-bottom:18px}.hand{display:flex;align-items:center;justify-content:center;gap:9px}.stick{display:block;width:138px;height:228px;flex:none}.answers{display:flex;gap:10px 34px;justify-content:center;flex-wrap:wrap;margin:0 auto 12px}.answers button{background:none;border:0;color:#c6cbd1;font-size:1.02rem;padding:10px 3px;min-height:44px}.answers button:hover:not(:disabled){color:#fff;text-decoration:underline;text-underline-offset:5px}.answers button.correct{color:#8cdeb5}.answers button.wrong{color:#ef979e;text-decoration:line-through}.answers button:focus-visible,nav button:focus-visible{outline:2px solid white;outline-offset:3px}.feedback{text-align:center;color:#abb2ba;min-height:26px;font-size:.9rem}.actions{display:flex;gap:25px;justify-content:center}.actions button{border:0;background:none;color:#aab0b7;padding:9px}.actions button.next{color:#fff;font-weight:600}.sectionnote{font-size:.88rem}.rankrow{display:flex;align-items:center;gap:19px;min-height:104px;padding:12px 4px;border-bottom:1px solid #363a40}.rankrow .hand{justify-content:flex-start;flex:none;width:112px;gap:3px}.rankrow .stick{width:50px;height:80px}.rankrow .name{font-weight:640}.rankrow .detail{font-size:.8rem;color:#aeb4bc;margin-top:4px}.rankrow .rank{color:#969da6;font-size:.8rem;min-width:28px}.rankrow .info{min-width:0}.catalog{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 25px}.catalog .rankrow{min-height:86px}.catalog .rankrow .stick{width:38px;height:63px}.catalog .rankrow .hand{width:86px}.duel{display:flex;align-items:center;gap:16px}.duel .stick{width:74px;height:124px}.duel .caption{font-size:.75rem;color:#9ca3ac;margin-bottom:6px}.duel .vs{font-size:.8rem;color:#959da6}footer{font-size:.8rem;color:#90969d;border-top:1px solid #363a40;margin-top:45px;padding-top:15px}[hidden]{display:none!important}
+@media(max-width:700px){main{padding:16px 15px 42px}nav{gap:19px}.catalog{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px}.catalog .rankrow{display:block;text-align:center;padding:14px 2px}.catalog .rankrow .hand{width:auto;justify-content:center;margin:6px auto}.catalog .rankrow .rank{display:none}.rankrow{gap:11px}.rankrow .rank{min-width:20px}.rankrow .hand{width:104px}.rankrow .stick{width:47px;height:77px}.stick{width:104px;height:174px}.stage{min-height:305px}.duel{gap:7px}.duel .stick{width:55px;height:91px}.answers{gap:4px 20px}}
+@media(max-width:390px){.rankrow .hand{width:90px}.rankrow .stick{width:40px;height:69px}.rankrow{gap:8px}.catalog .rankrow .stick{width:37px;height:60px}nav{gap:15px}}
+</style></head><body><main><header><h1>Duo Academy</h1><p>Crimson Desert · Learn the hands and practise recognising them.</p></header>
+<nav aria-label="Site sections"><button class="active" data-page="practice">Practice</button><button data-page="rankings">Rankings</button><button data-page="catalogue">All combinations</button><button data-page="special">Special hands</button></nav>
+<section id="practice"><div class="controls"><label>Mode<select id="mode"><option value="name">Identify hand</option><option value="duel">Which hand wins?</option><option value="points">Calculate points</option></select></label><label>Focus<select id="focus"><option value="all">All standard hands</option><option value="basics">Pairs & points</option><option value="named">Named hands</option></select></label></div><div class="stats"><span>Correct<strong id="correct">0</strong></span><span>Questions<strong id="attempted">0</strong></span><span>Accuracy<strong id="accuracy">—</strong></span><span>Streak<strong id="streak">0</strong></span></div><div class="stage"><div class="prompt" id="prompt"></div><div id="visual"></div></div><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="actions"><button id="next" class="next" hidden>Next hand →</button><button id="reset">Reset score</button></div></section>
+<section id="rankings" hidden><h2>All ranked hands</h2><p class="sectionnote">Scroll down to see every rank. Illustrated pairs and named combinations are listed individually, followed by all ordinary point ranks.</p><div id="rankRows"></div></section>
+<section id="catalogue" hidden><h2>All 55 number combinations</h2><p class="sectionnote">Each unordered pairing of 1–10. Colour-dependent special combinations can override these base values.</p><div class="catalog" id="allRows"></div></section>
+<section id="special" hidden><h2>Conditional special hands</h2><p class="sectionnote">Special rules depend on the colours of the sticks and the opposing hand. These are excluded from the automated practice questions.</p><div id="specialRows"></div></section>
+<footer>Unofficial fan-made Crimson Desert study tool. Flat charcoal design and red/ochre tally illustrations. Training results stay in this browser.</footer>
+</main><script>
+(()=>{'use strict';const $=id=>document.getElementById(id);
 const named=[[1,2,'One-Two'],[1,4,'One-Four'],[1,9,'One-Nine'],[1,10,'One-Ten'],[4,10,'Four-Ten'],[4,6,'Four-Six']];
-const special=[[3,7],[4,7],[4,9],[1,3],[1,8],[3,8]];
-const all=[];for(let a=1;a<=10;a++)for(let b=a;b<=10;b++)all.push([a,b]);
-const key=h=>h.join('-');const isSpecial=h=>special.some(x=>key(x)===key(h));
-function details(h){let [a,b]=h;if(a===b)return{group:'pair',name:a===10?'Ten Pair':a+' Pair',rank:100+a,description:'Matching numbers make a pair. Higher pairs beat lower pairs.'};let n=named.findIndex(x=>x[0]===a&&x[1]===b);if(n>=0)return{group:'named',name:named[n][2],rank:90-n,description:'Named combination #'+(n+1)+' of six. All named combinations beat ordinary points.'};let p=(a+b)%10;return{group:'points',name:p===9?'Perfect Nine':p===0?'Zero':p+' Points',rank:p,description:a+' + '+b+' = '+(a+b)+'. Keep the last digit: '+p+' points.'}}
-function tallySvg(n,color){
- const red=color==='red',fill=red?'#ae3430':'#bb9133';
- function marks(count,y){
-  let xs=count===5?[15,21,27,33]:Array.from({length:count},(_,i)=>24-(count-1)*3.7+i*7.4);
-  let s=xs.map((x,i)=>'<path d="M'+x+' '+(y+(i%2?0.7:-0.5))+' l'+(i%2?-.4:.5)+' 17"/>').join('');
-  if(count===5)s+='<path d="M12 '+(y+16)+' L36 '+(y+2)+'"/>';
-  return s;
- }
- let remaining=n,y=n>5?15:28, strokes='';
- while(remaining>=5){strokes+=marks(5,y);remaining-=5;y+=25}
- if(remaining)strokes+=marks(remaining,y);
- return '<svg class="duo-stick" viewBox="0 0 48 81" role="img" aria-label="'+n+' tally marks on '+(red?'red':'gold')+' stick" xmlns="http://www.w3.org/2000/svg">'+
- '<path fill="'+fill+'" d="M10 3 Q13 1 18 2 L29 2 Q36 1 39 4 Q43 6 43 13 L43 63 Q44 67 42 71 L42 78 L37 76 L33 79 L29 77 L25 79 L20 77 L15 79 L11 77 L7 79 L7 69 Q6 65 6 61 L6 14 Q6 8 10 3Z"/>'+
- '<g fill="none" stroke="#fff9ef" stroke-width="2.65" stroke-linecap="round" stroke-linejoin="round">'+strokes+'</g></svg>';
-}
-function tile(n,color){return tallySvg(n,color==='red'?'red':'yellow')}
-function card(h,colors){return '<div class="hand">'+h.map((n,i)=>tile(n,colors?colors[i]:(i%2?'red':'yellow'))).join('')+'</div>'}
-function sample(list){return list[Math.floor(Math.random()*list.length)]}function randomise(arr){let a=arr.slice();for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-const safe=all.filter(h=>!isSpecial(h));function pool(){let v=$('level').value;if(v==='basics')return safe.filter(h=>details(h).group!=='named');if(v==='named')return safe.filter(h=>details(h).group==='named');return safe}
-let s={correct:0,attempts:0,streak:0};try{let stored=JSON.parse(localStorage.getItem('duoAcademyV2'));if(stored&&Number.isInteger(stored.attempts)&&Number.isInteger(stored.correct))s=stored}catch(e){}
-let active=null,answered=false,correctLabel='';
-function update(){['correct','attempts','streak'].forEach(k=>$(k).textContent=s[k]);$('accuracy').textContent=s.attempts?Math.round(s.correct/s.attempts*100)+'%':'—';try{localStorage.setItem('duoAcademyV2',JSON.stringify(s))}catch(e){}}
-function qName(){let list=pool(), h=sample(list),d=details(h);let distractors=all.map(details).filter(x=>x.name!==d.name).map(x=>x.name);let options=[d.name,...randomise([...new Set(distractors)]).slice(0,3)];return{prompt:'What is this hand?',visual:card(h),options:randomise(options),correct:d.name,explain:d.description}}
-function qPoints(){let list=safe.filter(h=>details(h).group==='points');let h=sample(list),p=(h[0]+h[1])%10;return{prompt:'What is the ordinary point value?',visual:card(h),options:randomise([p+' points',...randomise([...Array(10).keys()].filter(x=>x!==p)).slice(0,3).map(x=>x+' points')]),correct:p+' points',explain:h.join(' + ')+' = '+(h[0]+h[1])+'; last digit = '+p+'.'}}
-function qDuel(){let list=pool(),a,b,da,db;for(let i=0;i<500;i++){a=sample(list);b=sample(list);if(key(a)===key(b))continue;da=details(a);db=details(b);if($('level').value==='tricky'&&i<300&&Math.abs(da.rank-db.rank)>5)continue;break}
-let comparison=da.rank===db.rank?'Tie':da.rank>db.rank?'Hand A':'Hand B';
-return{prompt:'Which hand ranks higher?',visual:'<div id="duel"><div class="duelSide"><strong>Hand A</strong>'+card(a)+'</div><strong>VS</strong><div class="duelSide"><strong>Hand B</strong>'+card(b)+'</div></div>',options:['Hand A','Hand B','Tie'],correct:comparison,explain:'A is '+da.name+'; B is '+db.name+'. '+(comparison==='Tie'?'Both have equal rank.':comparison+' outranks the other.')}}
-function newQuestion(){answered=false;let mode=$('mode').value;active=mode==='duel'?qDuel():mode==='value'?qPoints():qName();$('question').innerHTML='<h2>'+active.prompt+'</h2>'+active.visual;$('choices').innerHTML='';active.options.forEach(o=>{let btn=document.createElement('button');btn.textContent=o;btn.addEventListener('click',()=>answer(o));$('choices').appendChild(btn)});$('feedback').innerHTML='';$('next').hidden=true}
-function answer(pick){if(answered)return;answered=true;s.attempts++;if(pick===active.correct){s.correct++;s.streak++}else s.streak=0;[...$('choices').children].forEach(b=>{b.disabled=true;if(b.textContent===active.correct)b.classList.add('correct');else if(b.textContent===pick)b.classList.add('wrong')});$('feedback').innerHTML='<div class="feedback"><strong>'+(pick===active.correct?'Correct!':'Not quite — '+active.correct)+'</strong><br>'+active.explain+'</div>';$('next').hidden=false;update()}
-$('next').onclick=newQuestion;$('reset').onclick=()=>{if(!confirm('Reset your practice score?'))return;s={correct:0,attempts:0,streak:0};update();newQuestion()};$('mode').onchange=newQuestion;$('level').onchange=newQuestion;
-document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));['training','reference','catalog','special'].forEach(id=>$(id).hidden=id!==b.dataset.tab)});
-$('premiums').innerHTML='<div><span>Rank 1</span>'+card([3,8],['red','red'])+'<strong>Prime Pair</strong><br><small>Red 3 + red 8. Guaranteed winner.</small></div><div><span>Rank 2</span>'+card([1,3],['red','red'])+'<strong>Superior Pair</strong><br><small>Red 1 + red 3, or red 1 + red 8.</small></div>';
-$('specialGuide').innerHTML=[['Warden',[4,9],['mixed','mixed'],'Rematch against anything below One-Two; otherwise counts as points.'],['High Warden',[4,9],['red','red'],'Red 4 + red 9. Rematch against hands below Nine Pair; loses to Ten Pair.'],['Judge',[3,7],['mixed','mixed'],'Beats pairs from 1 Pair through 9 Pair; otherwise counts as points.'],['Executor',[4,7],['red','red'],'Red 4 + red 7. Beats Superior Pair, excluding Prime Pair; otherwise counts as points.']].map(x=>'<div><span>'+x[0]+'</span>'+card(x[1],x[2])+'<small>'+x[3]+'</small></div>').join('');
-$('pairs').innerHTML=Array.from({length:10},(_,i)=>10-i).map(n=>'<div><span>'+n+' + '+n+'</span>'+card([n,n])+'<strong>'+details([n,n]).name+'</strong></div>').join('');
-$('named').innerHTML=named.map((h,i)=>'<div><span>#'+(i+1)+' · '+h[0]+' + '+h[1]+'</span>'+card([h[0],h[1]])+'<strong>'+h[2]+'</strong></div>').join('');
-$('points').innerHTML=Array.from({length:10},(_,i)=>9-i).map(n=>{let h=all.find(h=>!isSpecial(h)&&details(h).group==='points'&&details(h).rank===n);return '<div><span>'+(n===9?'Perfect Nine':n===0?'Zero':n+' Points')+'</span>'+(h?card(h):'')+'<small>Ordinary value '+n+'</small></div>'}).join('');
-$('catalogCount').textContent=all.length;
-function catalogue(){let filter=$('filter').value,found=all.filter(h=>filter==='all'||filter==='conditional'&&isSpecial(h)||filter!=='conditional'&&!isSpecial(h)&&details(h).group===filter);$('allhands').innerHTML=found.map(h=>{let d=details(h);return'<div><span>'+h.join(' + ')+'</span>'+card(h)+'<strong>'+d.name+'</strong>'+(isSpecial(h)?'<br><small>Special condition may override</small>':'')+'</div>'}).join('')}
-$('filter').onchange=catalogue;catalogue();update();newQuestion();
-</script></body></html>
+const exceptions=new Set(['1-3','1-8','3-8','3-7','4-7','4-9']);
+const all=[];for(let a=1;a<=10;a++)for(let b=a;b<=10;b++)all.push([a,b]);const safe=all.filter(h=>!exceptions.has(h.join('-')));
+function rand(a){return a[Math.floor(Math.random()*a.length)]}function shuffle(a){let b=a.slice();for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function cls(h){const [a,b]=h;if(a===b)return{kind:'pair',name:a===10?'Ten Pair':a+' Pair',rank:100+a,desc:'Matching numbers. Higher pairs are stronger.'};let i=named.findIndex(x=>x[0]===a&&x[1]===b);if(i>=0)return{kind:'named',name:named[i][2],rank:90-i,desc:'Named combination. Beats ordinary points.'};let v=(a+b)%10;return{kind:'points',name:v===9?'Perfect Nine':v===0?'Zero':v+' Points',rank:v,points:v,desc:a+' + '+b+' = '+(a+b)+'; keep the last digit.'}}
+function lines(n){let y=n>5?11:24,d='';function group(c,y){let x=c===5?[15,21,27,33]:Array.from({length:c},(_,i)=>24-(c-1)*3.6+i*7.2);let s=x.map((v,i)=>'<path d="M'+v+' '+(y+(i%2?1:-1))+' l'+(i%2?-.3:.4)+' 18"/>').join('');return s+(c===5?'<path d="M12 '+(y+17)+' L36 '+(y+2)+'"/>':'')}while(n>=5){d+=group(5,y);n-=5;y+=26}if(n)d+=group(n,y);return d}
+function stick(n,color){let paint=color==='red'?'#a93331':'#b99134';return '<svg class="stick" viewBox="0 0 48 82" role="img" aria-label="'+color+' '+n+' stick" xmlns="http://www.w3.org/2000/svg"><path fill="'+paint+'" d="M10 3 Q13 1 18 2 L29 2 Q36 1 39 4 Q43 6 43 13 L43 63 Q44 67 42 71 L42 78 L37 76 L33 79 L29 77 L25 79 L20 77 L15 79 L11 77 L7 79 L7 69 Q6 65 6 61 L6 14 Q6 8 10 3Z"/><g stroke="#fff8ed" fill="none" stroke-width="2.65" stroke-linecap="round">'+lines(n)+'</g></svg>'}
+function hand(h,colors){colors=colors||['yellow','red'];return '<div class="hand">'+stick(h[0],colors[0])+stick(h[1],colors[1])+'</div>'}
+function row(h,name,desc,colors,rank){return '<div class="rankrow">'+(rank?'<div class="rank">'+rank+'</div>':'')+hand(h,colors)+'<div class="info"><div class="name">'+name+'</div><div class="detail">'+desc+'</div></div></div>'}
+let ranking=[],k=1;ranking.push(row([3,8],'Prime Pair','Red 3 + red 8 · premium combination',['red','red'],k++));ranking.push(row([1,3],'Superior Pair','Red 1 + red 3, or red 1 + red 8',['red','red'],k++));for(let a=10;a>=1;a--)ranking.push(row([a,a],cls([a,a]).name,'Matching pair',null,k++));for(let x of named)ranking.push(row([x[0],x[1]],x[2],'Named combination',null,k++));for(let p=9;p>=0;p--){let h=safe.find(x=>cls(x).kind==='points'&&cls(x).points===p);if(h)ranking.push(row(h,cls(h).name,'Ordinary point rank',null,k++))}$('rankRows').innerHTML=ranking.join('');
+$('allRows').innerHTML=all.map(h=>row(h,cls(h).name,h.join(' + ')+(exceptions.has(h.join('-'))?' · special condition':''))).join('');
+$('specialRows').innerHTML=[['Warden',[4,9],['yellow','red'],'Conditional rematch; otherwise 3 points.'],['High Warden',[4,9],['red','red'],'Red 4 + red 9; conditional rematch.'],['Judge',[3,7],['yellow','red'],'Counters many ordinary pairs; otherwise zero.'],['Executor',[4,7],['red','red'],'Red 4 + red 7; counters Superior Pair.']].map(x=>row(x[1],x[0],x[3],x[2])).join('');
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x===b));['practice','rankings','catalogue','special'].forEach(id=>$(id).hidden=id!==b.dataset.page)}));
+let stats={correct:0,attempted:0,streak:0};try{let x=JSON.parse(localStorage.getItem('duoAcademyMobile'));if(x&&Number.isInteger(x.attempted))stats=x}catch(e){}let active,answered=false;
+function update(){for(let k of ['correct','attempted','streak'])$(k).textContent=stats[k];$('accuracy').textContent=stats.attempted?Math.round(100*stats.correct/stats.attempted)+'%':'—'}
+function pool(){let f=$('focus').value;return f==='named'?safe.filter(h=>cls(h).kind==='named'):f==='basics'?safe.filter(h=>cls(h).kind!=='named'):safe}
+function build(){let mode=$('mode').value;if(mode==='points'){let h=rand(safe.filter(x=>cls(x).kind==='points')),v=cls(h).points,choices=shuffle([v,...shuffle(Array.from({length:10},(_,i)=>i).filter(x=>x!==v)).slice(0,3)]);return{prompt:'What is the point value?',visual:hand(h),options:choices.map(x=>x+' points'),correct:v+' points',explain:cls(h).desc}}
+if(mode==='duel'){let a,b,da,db,list=pool();do{a=rand(list);b=rand(list);da=cls(a);db=cls(b)}while(a.join('-')===b.join('-'));return{prompt:'Which hand ranks higher?',visual:'<div class="duel"><div><div class="caption">HAND A</div>'+hand(a)+'</div><div class="vs">VS</div><div><div class="caption">HAND B</div>'+hand(b)+'</div></div>',options:['Hand A','Hand B','Tie'],correct:da.rank===db.rank?'Tie':da.rank>db.rank?'Hand A':'Hand B',explain:'A: '+da.name+'. B: '+db.name+'.'}}
+let h=rand(pool()),d=cls(h),choices=shuffle([d.name,...shuffle([...new Set(safe.map(x=>cls(x).name).filter(x=>x!==d.name))]).slice(0,3)]);return{prompt:'What is this hand?',visual:hand(h),options:choices,correct:d.name,explain:d.desc}}
+function question(){answered=false;active=build();$('prompt').textContent=active.prompt;$('visual').innerHTML=active.visual;$('feedback').textContent='';$('next').hidden=true;$('answers').replaceChildren();active.options.forEach(text=>{let b=document.createElement('button');b.textContent=text;b.onclick=()=>answer(text);$('answers').appendChild(b)})}
+function answer(val){if(answered)return;answered=true;stats.attempted++;if(val===active.correct){stats.correct++;stats.streak++}else stats.streak=0;try{localStorage.setItem('duoAcademyMobile',JSON.stringify(stats))}catch(e){}update();[...$('answers').children].forEach(b=>{b.disabled=true;if(b.textContent===active.correct)b.classList.add('correct');else if(b.textContent===val)b.classList.add('wrong')});$('feedback').textContent=(val===active.correct?'Correct. ':'Answer: '+active.correct+'. ')+active.explain;$('next').hidden=false}
+$('mode').onchange=question;$('focus').onchange=question;$('next').onclick=question;$('reset').onclick=()=>{if(!confirm('Reset scores?'))return;stats={correct:0,attempted:0,streak:0};update();question()};update();question();
+})();</script></body></html>
