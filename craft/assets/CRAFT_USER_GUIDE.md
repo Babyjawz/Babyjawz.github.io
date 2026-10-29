@@ -1,6 +1,6 @@
-# Nymphs -Craft User Guide
+# Craft User Guide
 
-Nymphs -Craft lets you choose which Skyrim crafting recipes appear and what ingredients they consume. It reads your active Mod Organizer 2 profile, saves your decisions, and builds a separate plugin called `CraftPatch.esp`.
+Craft lets you choose which Skyrim crafting recipes appear and what ingredients they consume. It reads your active Mod Organizer 2 profile, saves your decisions, and builds a separate plugin called `CraftPatch.esp`.
 
 **The workflow is: select recipes, save decisions, build the patch, enable it in MO2, then check the result in Skyrim.** Saving a decision in Craft does not update the game until you build and enable the resulting patch.
 
@@ -18,9 +18,9 @@ These instructions use MO2's instance layout. Craft currently reads the `profile
 
 ## Install and launch
 
-1. Extract the complete **Nymphs -Craft** release folder into the `tools` folder inside your MO2 instance.
+1. Extract the complete Craft release folder into the `tools` folder inside your MO2 instance.
 2. Keep `Nymphs -Craft.exe` and its `app` subfolder together. Copy the whole folder when moving the tool.
-3. In MO2's executable settings, add the top-level `Nymphs -Craft.exe`.
+3. In MO2's executable settings, add the top-level `Nymphs -Craft.exe` and name its entry **Craft**.
 4. If the release folder is outside the MO2 instance, set its executable arguments to `--instance "C:\path\to\your\MO2 instance"`, using your actual instance path.
 5. Select the Skyrim profile you want to edit in MO2, launch Craft from MO2, and wait for **Ready**. Check the profile name in Craft's status line.
 
