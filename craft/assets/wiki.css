@@ -66,8 +66,8 @@ button:hover, select:hover { border-color: var(--muted); }
   background: var(--bar); border-bottom: 1px solid var(--line);
 }
 .brand { --wordmark-height: 55px; display: flex; align-items: flex-end; gap: 17px; text-decoration: none; flex-shrink: 0; }
-.brand img { display: block; width: 165px; height: var(--wordmark-height); object-fit: contain; }
-/* The wordmark's lettering baseline is 13% above the image bottom. Account for the
+.brand img { display: block; width: auto; height: var(--wordmark-height); object-fit: contain; }
+/* The header artwork matches Adorn's lettering height and 13% bottom inset.
    heading font's descent so the visible lettering aligns at every text size. */
 .brand > span { margin-bottom: calc(var(--wordmark-height) * .13 - .211em); border-left: 1px solid var(--line); padding-left: 18px; color: var(--muted); font: 1.4375rem/1 Craft,Georgia,serif; }
 .topbar-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; max-width: 100%; }
@@ -171,8 +171,7 @@ dialog::backdrop { background: var(--overlay); }
 }
 @media(max-width:760px) {
   .topbar { min-height: 68px; padding: 10px 16px; gap: 12px; }
-  .brand { --wordmark-height: 43px; gap: 9px; }
-  .brand img { width: 125px; }
+  .brand { --wordmark-height: 41.6667px; gap: 9px; }
   .brand > span { padding-left: 9px; font-size: 1.25rem; }
   .topbar-tools { gap: 9px; }
   .theme-control > span { display: none; }
@@ -193,7 +192,7 @@ dialog::backdrop { background: var(--overlay); }
 }
 @media(max-width:420px) {
   .brand > span { display: none; }
-  .brand img { width: 112px; }
+  .brand { --wordmark-height: 37.3333px; }
   .topbar { padding-inline: 12px; gap: 7px; }
   .topbar-tools { gap: 7px; }
   main { padding-inline: 18px; }
