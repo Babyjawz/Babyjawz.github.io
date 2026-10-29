@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" data-theme="grey">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Edit costs, find materials and restore source ingredients.">
+<meta name="color-scheme" content="dark">
+<title>Ingredients &amp; crafting costs · Craft Wiki</title>
+<link rel="icon" href="../assets/craft-icon.png">
+<link rel="stylesheet" href="../assets/wiki.css">
+<script src="../assets/theme.js"></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/wiki.js" defer></script>
+</head>
+<body data-page="costs" data-root="../">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="../index.html" aria-label="Craft Wiki home"><img src="../assets/craft-wordmark.png" width="180" height="60" alt="Craft"><span>Wiki</span></a>
+  <div class="topbar-tools">
+    <button class="search-open" id="search-open" aria-haspopup="dialog"><span>Search the wiki</span><kbd>/</kbd></button>
+    <label class="theme-control"><span>Theme</span><select id="theme" aria-label="Colour theme"><option value="grey">Grey</option><option value="sky">Sky</option><option value="pine">Pine</option><option value="pink">Pink</option></select></label>
+    <div class="text-scale" role="group" aria-label="Text size">
+      <button id="text-smaller" type="button" aria-label="Decrease text size">A−</button>
+      <button id="text-size" type="button" aria-label="Reset text size to 100 percent" title="Reset text size" aria-live="polite">100%</button>
+      <button id="text-larger" type="button" aria-label="Increase text size">A+</button>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-controls="contents" aria-expanded="false">Contents</button>
+  </div>
+</header>
+<div class="layout has-page-contents">
+  <aside class="sidebar" id="contents"><div class="contents-label">Contents</div><nav aria-label="Wiki contents"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">Craft wiki</a></li><li><a href="../start/installation.html">Install &amp; launch</a></li><li><a href="../start/first-patch.html">Your first patch</a></li></ul></section><section class="nav-group"><h2>Recipes</h2><ul><li><a href="finding.html">Find &amp; inspect recipes</a></li><li><a href="bulk.html">Bulk edits &amp; selection</a></li><li><a href="visibility.html">Visibility &amp; carry rules</a></li><li><a href="costs.html" class="current" aria-current="page">Ingredients &amp; crafting costs</a></li></ul></section><section class="nav-group"><h2>Patches &amp; profiles</h2><ul><li><a href="../patches/building.html">Build &amp; enable the patch</a></li><li><a href="../patches/profiles.html">Profiles &amp; load order</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="../reference/backups.html">Files, backups &amp; updates</a></li><li><a href="../reference/diagnostics.html">Command-line diagnostics</a></li><li><a href="../reference/troubleshooting.html">Troubleshooting</a></li><li><a href="../reference/credits.html">Artwork &amp; credits</a></li></ul></section></nav></aside>
+  <main id="main" tabindex="-1">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../index.html">Craft Wiki</a><span aria-hidden="true">/</span><span>Recipes</span></nav>
+    <h1>Ingredients &amp; crafting costs</h1>
+    <details class="mobile-page-contents"><summary>On this page</summary><nav aria-label="Sections in this article"><ul><li><a data-section-link href="#edit-crafting-costs">Edit crafting costs</a></li><li class="subsection"><a data-section-link href="#add-one-ingredient-to-several-recipes">Add one ingredient to several recipes</a></li><li class="subsection"><a data-section-link href="#change-a-single-recipe">Change a single recipe</a></li><li class="subsection"><a data-section-link href="#find-materials-and-enter-ids">Find materials and enter IDs</a></li></ul></nav></details>
+    <article><p>Crafting costs are the ingredients and quantities consumed when you make an item. Craft lets you set one material across a collection or edit a single recipe in detail, independently of its visibility mode.</p>
+<h2 id="edit-crafting-costs">Edit crafting costs<a class="heading-anchor" href="#edit-crafting-costs" aria-label="Link to Edit crafting costs">#</a></h2>
+<h3 id="add-one-ingredient-to-several-recipes">Add one ingredient to several recipes<a class="heading-anchor" href="#add-one-ingredient-to-several-recipes" aria-label="Link to Add one ingredient to several recipes">#</a></h3>
+<ol>
+<li>Set your filters and scope, then click <strong>Add ingredient to cost…</strong>.</li>
+<li>Use <strong>Find material…</strong> or enter the ingredient FormID.</li>
+<li>Choose a quantity from <strong>1 to 9999</strong> and apply the change.</li>
+</ol>
+<p>If the ingredient is absent, Craft adds it. If it is already present, Craft sets its quantity to the number you chose; it does not add that number to the previous quantity. This action keeps the saved visibility mode and threshold. Adding a new type also changes the ingredient pool evaluated by an existing carry rule.</p>
+<h3 id="change-a-single-recipe">Change a single recipe<a class="heading-anchor" href="#change-a-single-recipe" aria-label="Link to Change a single recipe">#</a></h3>
+<ol>
+<li>Select the recipe in <strong>Inspect recipes</strong>.</li>
+<li>Click <strong>Edit cost…</strong> in <strong>Selected recipe</strong>. Double-clicking a recipe also opens its cost editor.</li>
+<li>Edit ingredient IDs and quantities. Use a new row to add an ingredient or select a row and delete it to remove one.</li>
+<li>Click <strong>Save ingredients</strong>.</li>
+</ol>
+<p><strong>Find material…</strong> fills the currently selected existing row, or adds a row when the new row is selected. Check the row before choosing a material so you replace the ingredient you intend to change.</p>
+<p>To undo a recipe&#39;s cost edits, click <strong>Restore source ingredients</strong>, then <strong>Save ingredients</strong>. The source is the winning recipe from the current scan. If an existing carry rule requires more types than the restored cost contains, first lower the rule or choose <strong>Keep</strong>, then restore the ingredients.</p>
+<h3 id="find-materials-and-enter-ids">Find materials and enter IDs<a class="heading-anchor" href="#find-materials-and-enter-ids" aria-label="Link to Find materials and enter IDs">#</a></h3>
+<p>The material picker searches active-profile miscellaneous items and alchemy ingredients by name, EditorID, defining plugin, or FormID. Select a result and use <strong>Use selected material</strong>, or double-click it. The first opening builds a cached material catalog. Only the first 300 matches are displayed; narrow the search for more specific results.</p>
+<p>Other item types can be entered manually. Use an ID in the format <code>XXXXXX:Plugin.esp</code>: the item&#39;s local hexadecimal ID followed by its defining plugin, rather than a load-order-dependent console ID. The plugin must be active. Copy a known valid ID and check the result in game; manual entry is not a full item-record lookup.</p>
+</article>
+    <nav class="page-turn" aria-label="Previous and next articles"><a href="visibility.html"><span>Previous</span>Visibility &amp; carry rules</a><a href="../patches/building.html"><span>Next</span>Build &amp; enable the patch</a></nav>
+    <footer>Craft · Documentation · <a href="../assets/CRAFT_USER_GUIDE.md" download>Download full guide</a></footer>
+  </main>
+  <aside class="page-contents"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a data-section-link href="#edit-crafting-costs">Edit crafting costs</a></li><li class="subsection"><a data-section-link href="#add-one-ingredient-to-several-recipes">Add one ingredient to several recipes</a></li><li class="subsection"><a data-section-link href="#change-a-single-recipe">Change a single recipe</a></li><li class="subsection"><a data-section-link href="#find-materials-and-enter-ids">Find materials and enter IDs</a></li></ul></nav></aside>
+</div>
+<dialog id="search-dialog" aria-labelledby="search-title">
+  <form method="dialog" class="search-header"><h2 id="search-title">Search the wiki</h2><button aria-label="Close search">Close</button></form>
+  <label class="search-field"><span class="sr-only">Search terms</span><input id="search-input" type="search" placeholder="Recipes, ingredients, carry rules…" autocomplete="off"></label>
+  <p class="search-summary" id="search-summary" aria-live="polite">Search all guides and reference pages.</p>
+  <ul id="search-results"></ul>
+</dialog>
+</body></html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" data-theme="grey">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Find active recipes by source, station, identifiers and saved decisions.">
+<meta name="color-scheme" content="dark">
+<title>Find &amp; inspect recipes · Craft Wiki</title>
+<link rel="icon" href="../assets/craft-icon.png">
+<link rel="stylesheet" href="../assets/wiki.css">
+<script src="../assets/theme.js"></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/wiki.js" defer></script>
+</head>
+<body data-page="finding" data-root="../">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="../index.html" aria-label="Craft Wiki home"><img src="../assets/craft-wordmark.png" width="180" height="60" alt="Craft"><span>Wiki</span></a>
+  <div class="topbar-tools">
+    <button class="search-open" id="search-open" aria-haspopup="dialog"><span>Search the wiki</span><kbd>/</kbd></button>
+    <label class="theme-control"><span>Theme</span><select id="theme" aria-label="Colour theme"><option value="grey">Grey</option><option value="sky">Sky</option><option value="pine">Pine</option><option value="pink">Pink</option></select></label>
+    <div class="text-scale" role="group" aria-label="Text size">
+      <button id="text-smaller" type="button" aria-label="Decrease text size">A−</button>
+      <button id="text-size" type="button" aria-label="Reset text size to 100 percent" title="Reset text size" aria-live="polite">100%</button>
+      <button id="text-larger" type="button" aria-label="Increase text size">A+</button>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-controls="contents" aria-expanded="false">Contents</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="contents"><div class="contents-label">Contents</div><nav aria-label="Wiki contents"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">Craft wiki</a></li><li><a href="../start/installation.html">Install &amp; launch</a></li><li><a href="../start/first-patch.html">Your first patch</a></li></ul></section><section class="nav-group"><h2>Recipes</h2><ul><li><a href="finding.html" class="current" aria-current="page">Find &amp; inspect recipes</a></li><li><a href="bulk.html">Bulk edits &amp; selection</a></li><li><a href="visibility.html">Visibility &amp; carry rules</a></li><li><a href="costs.html">Ingredients &amp; crafting costs</a></li></ul></section><section class="nav-group"><h2>Patches &amp; profiles</h2><ul><li><a href="../patches/building.html">Build &amp; enable the patch</a></li><li><a href="../patches/profiles.html">Profiles &amp; load order</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="../reference/backups.html">Files, backups &amp; updates</a></li><li><a href="../reference/diagnostics.html">Command-line diagnostics</a></li><li><a href="../reference/troubleshooting.html">Troubleshooting</a></li><li><a href="../reference/credits.html">Artwork &amp; credits</a></li></ul></section></nav></aside>
+  <main id="main" tabindex="-1">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../index.html">Craft Wiki</a><span aria-hidden="true">/</span><span>Recipes</span></nav>
+    <h1>Find &amp; inspect recipes</h1>
+
+    <article><p>Craft brings the recipes from your active profile into a searchable catalog. Use the source-mod list and filters to find the entries you want, then inspect their current ingredients and winning plugin.</p>
+<h2 id="find-the-recipes-you-want">Find the recipes you want<a class="heading-anchor" href="#find-the-recipes-you-want" aria-label="Link to Find the recipes you want">#</a></h2>
+<p><strong>Bulk decisions</strong> groups recipes by their origin or source mod. Select several mods with <strong>Ctrl</strong> or <strong>Shift</strong>. <strong>All mods</strong> clears the selection; with no source mods selected, every source mod is included.</p>
+<p>The mod grouping identifies where a recipe originates. Its current values come from the last active plugin that overrides it. Inspect the <strong>Winning plugin</strong> in the recipe details when another patch has changed the recipe.</p>
+<p>Use these filters together:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Control</th>
+<th>How to use it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Search recipes</strong></td>
+<td>Search recipe EditorIDs, recipe FormIDs, source mod folders, source plugins, station identifiers, or created-object FormIDs. A displayed recipe label is derived from its EditorID; an item&#39;s in-game name may not match.</td>
+</tr>
+<tr>
+<td><strong>Crafting station</strong></td>
+<td>Limit the results to one station. Station names may appear as keyword EditorIDs or FormIDs. <strong>No station</strong> means the recipe has no station keyword.</td>
+</tr>
+<tr>
+<td><strong>Show</strong></td>
+<td>Review source properties or your saved visibility and ingredient choices.</td>
+</tr>
+</tbody></table></div>
+<p>The <strong>Show</strong> choices mean:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Choice</th>
+<th>Recipes included</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>All recipes</strong></td>
+<td>Every recipe matching the other filters.</td>
+</tr>
+<tr>
+<td><strong>Source: no conditions</strong></td>
+<td>Recipes with no conditions in the scanned source version.</td>
+</tr>
+<tr>
+<td><strong>Source: no ingredients or conditions</strong></td>
+<td>Recipes with neither ingredients nor conditions in the scanned source version.</td>
+</tr>
+<tr>
+<td><strong>Changed decisions</strong></td>
+<td>Recipes with a saved visibility change or ingredient edit.</td>
+</tr>
+<tr>
+<td><strong>Hidden</strong></td>
+<td>Recipes you have chosen to hide.</td>
+</tr>
+<tr>
+<td><strong>Shown by carried ingredients</strong></td>
+<td>Recipes with a saved carry rule.</td>
+</tr>
+<tr>
+<td><strong>Ingredient edits</strong></td>
+<td>Recipes with a saved cost change.</td>
+</tr>
+</tbody></table></div>
+<p>Source filters describe the input recipes before your Craft decisions. They do not evaluate your character, your inventory, or the game&#39;s live crafting menu. Craft excludes its own <code>CraftPatch.esp</code> from the input scan so previous output does not become the source for the next build.</p>
+</article>
+    <nav class="page-turn" aria-label="Previous and next articles"><a href="../start/first-patch.html"><span>Previous</span>Your first patch</a><a href="bulk.html"><span>Next</span>Bulk edits &amp; selection</a></nav>
+    <footer>Craft · Documentation · <a href="../assets/CRAFT_USER_GUIDE.md" download>Download full guide</a></footer>
+  </main>
+
+</div>
+<dialog id="search-dialog" aria-labelledby="search-title">
+  <form method="dialog" class="search-header"><h2 id="search-title">Search the wiki</h2><button aria-label="Close search">Close</button></form>
+  <label class="search-field"><span class="sr-only">Search terms</span><input id="search-input" type="search" placeholder="Recipes, ingredients, carry rules…" autocomplete="off"></label>
+  <p class="search-summary" id="search-summary" aria-live="polite">Search all guides and reference pages.</p>
+  <ul id="search-results"></ul>
+</dialog>
+</body></html>

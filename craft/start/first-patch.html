@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-theme="grey">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Change one recipe, build the patch and enable it in MO2.">
+<meta name="color-scheme" content="dark">
+<title>Your first patch · Craft Wiki</title>
+<link rel="icon" href="../assets/craft-icon.png">
+<link rel="stylesheet" href="../assets/wiki.css">
+<script src="../assets/theme.js"></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/wiki.js" defer></script>
+</head>
+<body data-page="first-patch" data-root="../">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="../index.html" aria-label="Craft Wiki home"><img src="../assets/craft-wordmark.png" width="180" height="60" alt="Craft"><span>Wiki</span></a>
+  <div class="topbar-tools">
+    <button class="search-open" id="search-open" aria-haspopup="dialog"><span>Search the wiki</span><kbd>/</kbd></button>
+    <label class="theme-control"><span>Theme</span><select id="theme" aria-label="Colour theme"><option value="grey">Grey</option><option value="sky">Sky</option><option value="pine">Pine</option><option value="pink">Pink</option></select></label>
+    <div class="text-scale" role="group" aria-label="Text size">
+      <button id="text-smaller" type="button" aria-label="Decrease text size">A−</button>
+      <button id="text-size" type="button" aria-label="Reset text size to 100 percent" title="Reset text size" aria-live="polite">100%</button>
+      <button id="text-larger" type="button" aria-label="Increase text size">A+</button>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-controls="contents" aria-expanded="false">Contents</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="contents"><div class="contents-label">Contents</div><nav aria-label="Wiki contents"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">Craft wiki</a></li><li><a href="installation.html">Install &amp; launch</a></li><li><a href="first-patch.html" class="current" aria-current="page">Your first patch</a></li></ul></section><section class="nav-group"><h2>Recipes</h2><ul><li><a href="../recipes/finding.html">Find &amp; inspect recipes</a></li><li><a href="../recipes/bulk.html">Bulk edits &amp; selection</a></li><li><a href="../recipes/visibility.html">Visibility &amp; carry rules</a></li><li><a href="../recipes/costs.html">Ingredients &amp; crafting costs</a></li></ul></section><section class="nav-group"><h2>Patches &amp; profiles</h2><ul><li><a href="../patches/building.html">Build &amp; enable the patch</a></li><li><a href="../patches/profiles.html">Profiles &amp; load order</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="../reference/backups.html">Files, backups &amp; updates</a></li><li><a href="../reference/diagnostics.html">Command-line diagnostics</a></li><li><a href="../reference/troubleshooting.html">Troubleshooting</a></li><li><a href="../reference/credits.html">Artwork &amp; credits</a></li></ul></section></nav></aside>
+  <main id="main" tabindex="-1">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../index.html">Craft Wiki</a><span aria-hidden="true">/</span><span>Start here</span></nav>
+    <h1>Your first patch</h1>
+
+    <article><p>Start with one recipe so you can follow a saved decision all the way into Skyrim. This walkthrough covers the carry rule, the generated plugin and the activation steps in MO2.</p>
+<h2 id="make-your-first-patch">Make your first patch<a class="heading-anchor" href="#make-your-first-patch" aria-label="Link to Make your first patch">#</a></h2>
+<ol>
+<li>Open <strong>Bulk decisions</strong> and select one source mod. Starting with one mod makes the result easy to review.</li>
+<li>Double-click the source mod to open <strong>Inspect recipes</strong> and look at its entries.</li>
+<li>Select one recipe. Click <strong>Set visibility…</strong> in <strong>Selected recipe</strong>, choose how many different ingredient types you must carry, and apply the rule.</li>
+<li>Click <strong>Build patch</strong>. Wait for the message confirming that the patch was built and read back.</li>
+<li>In MO2, enable the <strong>Craft Output</strong> mod and its <strong>CraftPatch.esp</strong> plugin. Refresh MO2&#39;s lists if the new output is not yet visible.</li>
+<li>Place <code>CraftPatch.esp</code> after the recipe sources and other recipe patches whose changes you want Craft to override.</li>
+<li>Launch Skyrim through MO2. At the affected crafting station, check the recipe with and without the chosen materials. Meet any existing perk, quest, and other source requirements too.</li>
+</ol>
+<p>The output is <code>&lt;MO2 instance&gt;\mods\Craft Output\CraftPatch.esp</code>. Craft writes the file but leaves activation and plugin ordering to you.</p>
+</article>
+    <nav class="page-turn" aria-label="Previous and next articles"><a href="installation.html"><span>Previous</span>Install &amp; launch</a><a href="../recipes/finding.html"><span>Next</span>Find &amp; inspect recipes</a></nav>
+    <footer>Craft · Documentation · <a href="../assets/CRAFT_USER_GUIDE.md" download>Download full guide</a></footer>
+  </main>
+
+</div>
+<dialog id="search-dialog" aria-labelledby="search-title">
+  <form method="dialog" class="search-header"><h2 id="search-title">Search the wiki</h2><button aria-label="Close search">Close</button></form>
+  <label class="search-field"><span class="sr-only">Search terms</span><input id="search-input" type="search" placeholder="Recipes, ingredients, carry rules…" autocomplete="off"></label>
+  <p class="search-summary" id="search-summary" aria-live="polite">Search all guides and reference pages.</p>
+  <ul id="search-results"></ul>
+</dialog>
+</body></html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" data-theme="grey">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Preserve your decisions, change theme or remove the tool.">
+<meta name="color-scheme" content="dark">
+<title>Files, backups &amp; updates · Craft Wiki</title>
+<link rel="icon" href="../assets/craft-icon.png">
+<link rel="stylesheet" href="../assets/wiki.css">
+<script src="../assets/theme.js"></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/wiki.js" defer></script>
+</head>
+<body data-page="backups" data-root="../">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="../index.html" aria-label="Craft Wiki home"><img src="../assets/craft-wordmark.png" width="180" height="60" alt="Craft"><span>Wiki</span></a>
+  <div class="topbar-tools">
+    <button class="search-open" id="search-open" aria-haspopup="dialog"><span>Search the wiki</span><kbd>/</kbd></button>
+    <label class="theme-control"><span>Theme</span><select id="theme" aria-label="Colour theme"><option value="grey">Grey</option><option value="sky">Sky</option><option value="pine">Pine</option><option value="pink">Pink</option></select></label>
+    <div class="text-scale" role="group" aria-label="Text size">
+      <button id="text-smaller" type="button" aria-label="Decrease text size">A−</button>
+      <button id="text-size" type="button" aria-label="Reset text size to 100 percent" title="Reset text size" aria-live="polite">100%</button>
+      <button id="text-larger" type="button" aria-label="Increase text size">A+</button>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-controls="contents" aria-expanded="false">Contents</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="contents"><div class="contents-label">Contents</div><nav aria-label="Wiki contents"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">Craft wiki</a></li><li><a href="../start/installation.html">Install &amp; launch</a></li><li><a href="../start/first-patch.html">Your first patch</a></li></ul></section><section class="nav-group"><h2>Recipes</h2><ul><li><a href="../recipes/finding.html">Find &amp; inspect recipes</a></li><li><a href="../recipes/bulk.html">Bulk edits &amp; selection</a></li><li><a href="../recipes/visibility.html">Visibility &amp; carry rules</a></li><li><a href="../recipes/costs.html">Ingredients &amp; crafting costs</a></li></ul></section><section class="nav-group"><h2>Patches &amp; profiles</h2><ul><li><a href="../patches/building.html">Build &amp; enable the patch</a></li><li><a href="../patches/profiles.html">Profiles &amp; load order</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="backups.html" class="current" aria-current="page">Files, backups &amp; updates</a></li><li><a href="diagnostics.html">Command-line diagnostics</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><a href="credits.html">Artwork &amp; credits</a></li></ul></section></nav></aside>
+  <main id="main" tabindex="-1">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../index.html">Craft Wiki</a><span aria-hidden="true">/</span><span>Reference</span></nav>
+    <h1>Files, backups &amp; updates</h1>
+
+    <article><p>Your decisions are the part of Craft to preserve when updating, moving the app or maintaining different setups. This reference identifies the saved files, generated output and ways to restore source behaviour.</p>
+<h2 id="back-up-update-or-remove-craft">Back up, update, or remove Craft<a class="heading-anchor" href="#back-up-update-or-remove-craft" aria-label="Link to Back up, update, or remove Craft">#</a></h2>
+<p>Close Craft before copying or replacing its files. Back up <code>app\decisions.json</code> before updating, moving between decision sets, or resetting your choices. Preserve this file when extracting a new release into an existing installation.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>File or folder</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>app\decisions.json</code></td>
+<td>Saved visibility rules and ingredient edits. Created when you save decisions.</td>
+</tr>
+<tr>
+<td><code>app\craft-theme.txt</code></td>
+<td>Saved colour theme.</td>
+</tr>
+<tr>
+<td><code>app\profile-cache.json</code></td>
+<td>Cached MO2 profile resolution.</td>
+</tr>
+<tr>
+<td><code>app\recipe-cache.json</code></td>
+<td>Cached input recipe catalog.</td>
+</tr>
+<tr>
+<td><code>app\material-cache.json</code></td>
+<td>Cached material search catalog.</td>
+</tr>
+<tr>
+<td><code>&lt;MO2 instance&gt;\mods\Craft Output\CraftPatch.esp</code></td>
+<td>Generated plugin used by Skyrim when enabled.</td>
+</tr>
+<tr>
+<td><code>%LOCALAPPDATA%\Nymphs -Craft\launcher-diagnostic.log</code></td>
+<td>Launcher diagnostics.</td>
+</tr>
+<tr>
+<td><code>%LOCALAPPDATA%\Nymphs -Craft\launch-diagnostic.log</code></td>
+<td>App launch diagnostics.</td>
+</tr>
+</tbody></table></div>
+<p>Colour swatches at the top right choose Grey, Pine, Sky, Pink, or Brown for the app&#39;s appearance. Grey is the default; themes do not affect recipes.</p>
+<p>To reset every decision, close Craft, move <code>app\decisions.json</code> to a backup location, and reopen Craft. Disable the old output in MO2 too; resetting the app&#39;s decisions does not clear an existing patch.</p>
+<p>To turn off Craft&#39;s changes, disable <code>CraftPatch.esp</code> or <strong>Craft Output</strong> in MO2. To remove the tool, close it, remove its MO2 executable entry and app folder, and remove the output if you no longer need it. Keep your decisions backup if you may return later.</p>
+</article>
+    <nav class="page-turn" aria-label="Previous and next articles"><a href="../patches/profiles.html"><span>Previous</span>Profiles &amp; load order</a><a href="diagnostics.html"><span>Next</span>Command-line diagnostics</a></nav>
+    <footer>Craft · Documentation · <a href="../assets/CRAFT_USER_GUIDE.md" download>Download full guide</a></footer>
+  </main>
+
+</div>
+<dialog id="search-dialog" aria-labelledby="search-title">
+  <form method="dialog" class="search-header"><h2 id="search-title">Search the wiki</h2><button aria-label="Close search">Close</button></form>
+  <label class="search-field"><span class="sr-only">Search terms</span><input id="search-input" type="search" placeholder="Recipes, ingredients, carry rules…" autocomplete="off"></label>
+  <p class="search-summary" id="search-summary" aria-live="polite">Search all guides and reference pages.</p>
+  <ul id="search-results"></ul>
+</dialog>
+</body></html>

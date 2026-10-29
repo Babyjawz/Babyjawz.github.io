@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" data-theme="grey">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Resolve scan, ingredient, visibility, build and launch problems.">
+<meta name="color-scheme" content="dark">
+<title>Troubleshooting · Craft Wiki</title>
+<link rel="icon" href="../assets/craft-icon.png">
+<link rel="stylesheet" href="../assets/wiki.css">
+<script src="../assets/theme.js"></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/wiki.js" defer></script>
+</head>
+<body data-page="troubleshooting" data-root="../">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="../index.html" aria-label="Craft Wiki home"><img src="../assets/craft-wordmark.png" width="180" height="60" alt="Craft"><span>Wiki</span></a>
+  <div class="topbar-tools">
+    <button class="search-open" id="search-open" aria-haspopup="dialog"><span>Search the wiki</span><kbd>/</kbd></button>
+    <label class="theme-control"><span>Theme</span><select id="theme" aria-label="Colour theme"><option value="grey">Grey</option><option value="sky">Sky</option><option value="pine">Pine</option><option value="pink">Pink</option></select></label>
+    <div class="text-scale" role="group" aria-label="Text size">
+      <button id="text-smaller" type="button" aria-label="Decrease text size">A−</button>
+      <button id="text-size" type="button" aria-label="Reset text size to 100 percent" title="Reset text size" aria-live="polite">100%</button>
+      <button id="text-larger" type="button" aria-label="Increase text size">A+</button>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-controls="contents" aria-expanded="false">Contents</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="contents"><div class="contents-label">Contents</div><nav aria-label="Wiki contents"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">Craft wiki</a></li><li><a href="../start/installation.html">Install &amp; launch</a></li><li><a href="../start/first-patch.html">Your first patch</a></li></ul></section><section class="nav-group"><h2>Recipes</h2><ul><li><a href="../recipes/finding.html">Find &amp; inspect recipes</a></li><li><a href="../recipes/bulk.html">Bulk edits &amp; selection</a></li><li><a href="../recipes/visibility.html">Visibility &amp; carry rules</a></li><li><a href="../recipes/costs.html">Ingredients &amp; crafting costs</a></li></ul></section><section class="nav-group"><h2>Patches &amp; profiles</h2><ul><li><a href="../patches/building.html">Build &amp; enable the patch</a></li><li><a href="../patches/profiles.html">Profiles &amp; load order</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="backups.html">Files, backups &amp; updates</a></li><li><a href="diagnostics.html">Command-line diagnostics</a></li><li><a href="troubleshooting.html" class="current" aria-current="page">Troubleshooting</a></li><li><a href="credits.html">Artwork &amp; credits</a></li></ul></section></nav></aside>
+  <main id="main" tabindex="-1">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../index.html">Craft Wiki</a><span aria-hidden="true">/</span><span>Reference</span></nav>
+    <h1>Troubleshooting</h1>
+
+    <article><p>Use the symptom checks below when Craft cannot scan, save a choice, build a patch or produce the expected menu behaviour. Check the intended profile and output activation before investigating a particular recipe.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="heading-anchor" href="#troubleshooting" aria-label="Link to Troubleshooting">#</a></h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Could not find the MO2 instance</strong></td>
+<td>Keep the complete app inside the instance&#39;s <code>tools</code> folder, or set <code>--instance</code> to the folder containing <code>ModOrganizer.ini</code>, <code>profiles</code>, and <code>mods</code>.</td>
+</tr>
+<tr>
+<td><strong>Skyrim Data folder not found</strong> or missing <strong>gamePath</strong></td>
+<td>Correct the game path in MO2 and confirm that Skyrim&#39;s <code>Data</code> folder exists.</td>
+</tr>
+<tr>
+<td>The app does not open</td>
+<td>Extract the whole release again, including <code>app</code>. Check both launch logs listed above. A framework-dependent development build differs from the self-contained player release.</td>
+</tr>
+<tr>
+<td>An expected recipe is missing</td>
+<td>Check the active profile, enabled source plugin, selected source mods, search, station, and Show filter. Click <strong>All mods</strong>, clear the search, choose <strong>All stations</strong> and <strong>All recipes</strong>, then rescan. Review scan warnings.</td>
+</tr>
+<tr>
+<td>A plugin is skipped or missing</td>
+<td>Confirm the file is present and enabled in the active profile. Resolve the reported plugin problem and rescan. An incomplete scan may omit recipes or winners.</td>
+</tr>
+<tr>
+<td><strong>Saved decision has no active recipe</strong></td>
+<td>The recipe is no longer in this profile or its ID changed. The saved decision is retained. Restore the relevant source if intended, or keep the backup while revising your choices.</td>
+</tr>
+<tr>
+<td><strong>The MO2 profile changed since the scan</strong></td>
+<td>Click <strong>Rescan MO2</strong>, review the new inputs, then build again.</td>
+</tr>
+<tr>
+<td>A carry rule cannot be saved or built</td>
+<td>Ensure the recipe has enough different ingredients for the threshold. Lower an unsupported threshold, or use one type or all types for a large recipe.</td>
+</tr>
+<tr>
+<td>Ingredient changes are refused</td>
+<td>Use a local hexadecimal FormID with its defining plugin, an active ingredient plugin, and quantities from 1 to 9999. Lower a carry threshold before removing ingredient types it needs.</td>
+</tr>
+<tr>
+<td>The recipe appears but cannot be crafted</td>
+<td>Carry rules check ingredient types. You still need the complete crafting quantities and all source requirements.</td>
+</tr>
+<tr>
+<td>A recipe remains hidden after <strong>Keep</strong></td>
+<td>Source conditions may still hide it. Rebuild after changing the decision and check that the updated patch wins.</td>
+</tr>
+<tr>
+<td>Skyrim shows the old behaviour</td>
+<td>Confirm the build succeeded, the intended profile is active, the mod and plugin are enabled, and no later plugin overrides it. Restart Skyrim after changing the output.</td>
+</tr>
+<tr>
+<td><strong>No recipe decisions to patch</strong></td>
+<td>Make at least one active change to build. If returning everything to source behaviour, disable the old output; it is not automatically emptied.</td>
+</tr>
+</tbody></table></div>
+<p>For a useful bug report, include the Craft release you installed, the error text, the recipe ID and source/winning plugins when relevant, and the steps that produced the problem. Include the relevant launch-log excerpt for startup issues. Review logs for personal paths before sharing them.</p>
+</article>
+    <nav class="page-turn" aria-label="Previous and next articles"><a href="diagnostics.html"><span>Previous</span>Command-line diagnostics</a><a href="credits.html"><span>Next</span>Artwork &amp; credits</a></nav>
+    <footer>Craft · Documentation · <a href="../assets/CRAFT_USER_GUIDE.md" download>Download full guide</a></footer>
+  </main>
+
+</div>
+<dialog id="search-dialog" aria-labelledby="search-title">
+  <form method="dialog" class="search-header"><h2 id="search-title">Search the wiki</h2><button aria-label="Close search">Close</button></form>
+  <label class="search-field"><span class="sr-only">Search terms</span><input id="search-input" type="search" placeholder="Recipes, ingredients, carry rules…" autocomplete="off"></label>
+  <p class="search-summary" id="search-summary" aria-live="polite">Search all guides and reference pages.</p>
+  <ul id="search-results"></ul>
+</dialog>
+</body></html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-theme="grey">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Requirements, the release folder and MO2 executable setup.">
+<meta name="color-scheme" content="dark">
+<title>Install &amp; launch · Craft Wiki</title>
+<link rel="icon" href="../assets/craft-icon.png">
+<link rel="stylesheet" href="../assets/wiki.css">
+<script src="../assets/theme.js"></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/wiki.js" defer></script>
+</head>
+<body data-page="installation" data-root="../">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="../index.html" aria-label="Craft Wiki home"><img src="../assets/craft-wordmark.png" width="180" height="60" alt="Craft"><span>Wiki</span></a>
+  <div class="topbar-tools">
+    <button class="search-open" id="search-open" aria-haspopup="dialog"><span>Search the wiki</span><kbd>/</kbd></button>
+    <label class="theme-control"><span>Theme</span><select id="theme" aria-label="Colour theme"><option value="grey">Grey</option><option value="sky">Sky</option><option value="pine">Pine</option><option value="pink">Pink</option></select></label>
+    <div class="text-scale" role="group" aria-label="Text size">
+      <button id="text-smaller" type="button" aria-label="Decrease text size">A−</button>
+      <button id="text-size" type="button" aria-label="Reset text size to 100 percent" title="Reset text size" aria-live="polite">100%</button>
+      <button id="text-larger" type="button" aria-label="Increase text size">A+</button>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-controls="contents" aria-expanded="false">Contents</button>
+  </div>
+</header>
+<div class="layout has-page-contents">
+  <aside class="sidebar" id="contents"><div class="contents-label">Contents</div><nav aria-label="Wiki contents"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">Craft wiki</a></li><li><a href="installation.html" class="current" aria-current="page">Install &amp; launch</a></li><li><a href="first-patch.html">Your first patch</a></li></ul></section><section class="nav-group"><h2>Recipes</h2><ul><li><a href="../recipes/finding.html">Find &amp; inspect recipes</a></li><li><a href="../recipes/bulk.html">Bulk edits &amp; selection</a></li><li><a href="../recipes/visibility.html">Visibility &amp; carry rules</a></li><li><a href="../recipes/costs.html">Ingredients &amp; crafting costs</a></li></ul></section><section class="nav-group"><h2>Patches &amp; profiles</h2><ul><li><a href="../patches/building.html">Build &amp; enable the patch</a></li><li><a href="../patches/profiles.html">Profiles &amp; load order</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="../reference/backups.html">Files, backups &amp; updates</a></li><li><a href="../reference/diagnostics.html">Command-line diagnostics</a></li><li><a href="../reference/troubleshooting.html">Troubleshooting</a></li><li><a href="../reference/credits.html">Artwork &amp; credits</a></li></ul></section></nav></aside>
+  <main id="main" tabindex="-1">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../index.html">Craft Wiki</a><span aria-hidden="true">/</span><span>Start here</span></nav>
+    <h1>Install &amp; launch</h1>
+    <details class="mobile-page-contents"><summary>On this page</summary><nav aria-label="Sections in this article"><ul><li><a data-section-link href="#requirements">Requirements</a></li><li><a data-section-link href="#install-and-launch">Install and launch</a></li></ul></nav></details>
+    <article><p>Craft is a Windows desktop tool that reads an existing Mod Organizer 2 Skyrim profile. Install its complete release folder and point it at the intended instance before making recipe decisions.</p>
+<h2 id="requirements">Requirements<a class="heading-anchor" href="#requirements" aria-label="Link to Requirements">#</a></h2>
+<ul>
+<li>Windows x64.</li>
+<li>Skyrim Special Edition or Anniversary Edition.</li>
+<li>Mod Organizer 2 with an active Skyrim profile.</li>
+<li>A writable MO2 instance folder containing <code>ModOrganizer.ini</code>, <code>profiles</code>, and <code>mods</code>.</li>
+<li>The correct Skyrim game path configured in MO2, with the game&#39;s <code>Data</code> folder available.</li>
+</ul>
+<p>The self-contained release includes its .NET runtime. Players do not need to install a separate .NET or Visual C++ runtime. Craft itself does not require SKSE, SkyPatcher, SPID, or KID; requirements of your source mods still apply.</p>
+<p>These instructions use MO2&#39;s instance layout. Craft currently reads the <code>profiles</code> and <code>mods</code> folders directly under the instance folder. A Vortex-managed setup or an MO2 configuration with those folders redirected elsewhere is outside this workflow.</p>
+<h2 id="install-and-launch">Install and launch<a class="heading-anchor" href="#install-and-launch" aria-label="Link to Install and launch">#</a></h2>
+<ol>
+<li>Extract the complete <strong>Nymphs -Craft</strong> release folder into the <code>tools</code> folder inside your MO2 instance.</li>
+<li>Keep <code>Nymphs -Craft.exe</code> and its <code>app</code> subfolder together. Copy the whole folder when moving the tool.</li>
+<li>In MO2&#39;s executable settings, add the top-level <code>Nymphs -Craft.exe</code>.</li>
+<li>If the release folder is outside the MO2 instance, set its executable arguments to <code>--instance &quot;C:\path\to\your\MO2 instance&quot;</code>, using your actual instance path.</li>
+<li>Select the Skyrim profile you want to edit in MO2, launch Craft from MO2, and wait for <strong>Ready</strong>. Check the profile name in Craft&#39;s status line.</li>
+</ol>
+<p>An example layout is:</p>
+<pre><code class="language-text">MO2 instance\
+  ModOrganizer.ini
+  profiles\
+  mods\
+  tools\
+    Nymphs -Craft\
+      Nymphs -Craft.exe
+      app\
+</code></pre>
+<p>Craft finds the instance by searching its parent folders for the expected MO2 files and folders. The <code>--instance</code> argument supplies that folder explicitly.</p>
+</article>
+    <nav class="page-turn" aria-label="Previous and next articles"><a href="../index.html"><span>Previous</span>Craft wiki</a><a href="first-patch.html"><span>Next</span>Your first patch</a></nav>
+    <footer>Craft · Documentation · <a href="../assets/CRAFT_USER_GUIDE.md" download>Download full guide</a></footer>
+  </main>
+  <aside class="page-contents"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a data-section-link href="#requirements">Requirements</a></li><li><a data-section-link href="#install-and-launch">Install and launch</a></li></ul></nav></aside>
+</div>
+<dialog id="search-dialog" aria-labelledby="search-title">
+  <form method="dialog" class="search-header"><h2 id="search-title">Search the wiki</h2><button aria-label="Close search">Close</button></form>
+  <label class="search-field"><span class="sr-only">Search terms</span><input id="search-input" type="search" placeholder="Recipes, ingredients, carry rules…" autocomplete="off"></label>
+  <p class="search-summary" id="search-summary" aria-live="polite">Search all guides and reference pages.</p>
+  <ul id="search-results"></ul>
+</dialog>
+</body></html>

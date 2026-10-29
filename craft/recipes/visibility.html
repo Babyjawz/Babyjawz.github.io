@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" data-theme="grey">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Keep, hide or reveal recipes using different ingredient types.">
+<meta name="color-scheme" content="dark">
+<title>Visibility &amp; carry rules · Craft Wiki</title>
+<link rel="icon" href="../assets/craft-icon.png">
+<link rel="stylesheet" href="../assets/wiki.css">
+<script src="../assets/theme.js"></script>
+<script src="../assets/search-data.js" defer></script>
+<script src="../assets/wiki.js" defer></script>
+</head>
+<body data-page="visibility" data-root="../">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="../index.html" aria-label="Craft Wiki home"><img src="../assets/craft-wordmark.png" width="180" height="60" alt="Craft"><span>Wiki</span></a>
+  <div class="topbar-tools">
+    <button class="search-open" id="search-open" aria-haspopup="dialog"><span>Search the wiki</span><kbd>/</kbd></button>
+    <label class="theme-control"><span>Theme</span><select id="theme" aria-label="Colour theme"><option value="grey">Grey</option><option value="sky">Sky</option><option value="pine">Pine</option><option value="pink">Pink</option></select></label>
+    <div class="text-scale" role="group" aria-label="Text size">
+      <button id="text-smaller" type="button" aria-label="Decrease text size">A−</button>
+      <button id="text-size" type="button" aria-label="Reset text size to 100 percent" title="Reset text size" aria-live="polite">100%</button>
+      <button id="text-larger" type="button" aria-label="Increase text size">A+</button>
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-controls="contents" aria-expanded="false">Contents</button>
+  </div>
+</header>
+<div class="layout has-page-contents">
+  <aside class="sidebar" id="contents"><div class="contents-label">Contents</div><nav aria-label="Wiki contents"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">Craft wiki</a></li><li><a href="../start/installation.html">Install &amp; launch</a></li><li><a href="../start/first-patch.html">Your first patch</a></li></ul></section><section class="nav-group"><h2>Recipes</h2><ul><li><a href="finding.html">Find &amp; inspect recipes</a></li><li><a href="bulk.html">Bulk edits &amp; selection</a></li><li><a href="visibility.html" class="current" aria-current="page">Visibility &amp; carry rules</a></li><li><a href="costs.html">Ingredients &amp; crafting costs</a></li></ul></section><section class="nav-group"><h2>Patches &amp; profiles</h2><ul><li><a href="../patches/building.html">Build &amp; enable the patch</a></li><li><a href="../patches/profiles.html">Profiles &amp; load order</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="../reference/backups.html">Files, backups &amp; updates</a></li><li><a href="../reference/diagnostics.html">Command-line diagnostics</a></li><li><a href="../reference/troubleshooting.html">Troubleshooting</a></li><li><a href="../reference/credits.html">Artwork &amp; credits</a></li></ul></section></nav></aside>
+  <main id="main" tabindex="-1">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../index.html">Craft Wiki</a><span aria-hidden="true">/</span><span>Recipes</span></nav>
+    <h1>Visibility &amp; carry rules</h1>
+    <details class="mobile-page-contents"><summary>On this page</summary><nav aria-label="Sections in this article"><ul><li><a data-section-link href="#change-recipe-visibility">Change recipe visibility</a></li><li class="subsection"><a data-section-link href="#understand-carry-rules">Understand carry rules</a></li><li class="subsection"><a data-section-link href="#set-rules-for-a-collection">Set rules for a collection</a></li></ul></nav></details>
+    <article><p>Visibility decides whether a recipe is available in the crafting menu. You can keep its source requirements, hide it, or add a rule based on the different ingredient types you carry.</p>
+<h2 id="change-recipe-visibility">Change recipe visibility<a class="heading-anchor" href="#change-recipe-visibility" aria-label="Link to Change recipe visibility">#</a></h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Use original visibility</strong> or <strong>Keep</strong></td>
+<td>Removes Craft&#39;s visibility choice. Source visibility requirements continue to apply. Existing cost edits remain.</td>
+</tr>
+<tr>
+<td><strong>Hide from crafting</strong> or <strong>Hide</strong></td>
+<td>Makes the recipe unavailable through the generated patch. The item itself is not removed from your game.</td>
+</tr>
+<tr>
+<td><strong>Show when ingredients carried…</strong> or <strong>Set visibility…</strong></td>
+<td>Adds a requirement to carry a chosen number of different ingredient types, alongside the source requirements.</td>
+</tr>
+</tbody></table></div>
+<p><strong>Keep does not force a recipe to appear.</strong> A source mod may still require a perk, quest stage, item, or other condition. Restoring visibility also does not restore an edited crafting cost.</p>
+<h3 id="understand-carry-rules">Understand carry rules<a class="heading-anchor" href="#understand-carry-rules" aria-label="Link to Understand carry rules">#</a></h3>
+<p>A carry rule counts <strong>different ingredient types</strong>, with at least one of each counted type in your inventory. It uses the recipe&#39;s current ingredient list, including your cost edits.</p>
+<p>Suppose a recipe costs four iron ingots, two leather strips, and one linen wrap:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Carry requirement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Carry 1 of 3</strong></td>
+<td>At least one iron ingot, leather strip, or linen wrap.</td>
+</tr>
+<tr>
+<td><strong>Carry 2 of 3</strong></td>
+<td>At least one of any two of those types.</td>
+</tr>
+<tr>
+<td><strong>Carry 3 of 3</strong></td>
+<td>At least one of each of the three types.</td>
+</tr>
+</tbody></table></div>
+<p>Four iron ingots count as one type. Even <strong>Carry all</strong> checks one of every type; it does not check that you have the full quantities needed to craft. Making the item still consumes four ingots, two strips, and one wrap, and all source requirements must also be met.</p>
+<h3 id="set-rules-for-a-collection">Set rules for a collection<a class="heading-anchor" href="#set-rules-for-a-collection" aria-label="Link to Set rules for a collection">#</a></h3>
+<ol>
+<li>Set the source mods, filters, and action scope.</li>
+<li>Click <strong>Show when ingredients carried…</strong>.</li>
+<li>When several recipes are targeted, the dialog groups them by how many different ingredients they use.</li>
+<li>Choose <strong>Carry n of total</strong> for each group you want to change, or use a quick choice.</li>
+<li>Review the number of recipes that will change and click <strong>Save visibility</strong>.</li>
+</ol>
+<p><strong>Carry any 1</strong> chooses one type for each eligible group. <strong>Carry all</strong> chooses every type. <strong>Carry up to 2</strong> chooses one for one-type recipes and two for recipes with two or more types.</p>
+<p>Groups left on <strong>Choose a number...</strong> keep their existing decisions. <strong>Clear choices</strong> clears the selections in the open dialog; it does not erase saved rules. Recipes with no ingredients are skipped. Add a cost ingredient first if you want to give such a recipe a carry rule.</p>
+<p>Some thresholds on recipes with many different ingredients would require too many game conditions. Craft limits generated carry-rule conditions to 512 per recipe and asks you to adjust unsupported choices. Choose a simpler threshold such as one type or all types.</p>
+</article>
+    <nav class="page-turn" aria-label="Previous and next articles"><a href="bulk.html"><span>Previous</span>Bulk edits &amp; selection</a><a href="costs.html"><span>Next</span>Ingredients &amp; crafting costs</a></nav>
+    <footer>Craft · Documentation · <a href="../assets/CRAFT_USER_GUIDE.md" download>Download full guide</a></footer>
+  </main>
+  <aside class="page-contents"><nav aria-label="On this page"><h2>On this page</h2><ul><li><a data-section-link href="#change-recipe-visibility">Change recipe visibility</a></li><li class="subsection"><a data-section-link href="#understand-carry-rules">Understand carry rules</a></li><li class="subsection"><a data-section-link href="#set-rules-for-a-collection">Set rules for a collection</a></li></ul></nav></aside>
+</div>
+<dialog id="search-dialog" aria-labelledby="search-title">
+  <form method="dialog" class="search-header"><h2 id="search-title">Search the wiki</h2><button aria-label="Close search">Close</button></form>
+  <label class="search-field"><span class="sr-only">Search terms</span><input id="search-input" type="search" placeholder="Recipes, ingredients, carry rules…" autocomplete="off"></label>
+  <p class="search-summary" id="search-summary" aria-live="polite">Search all guides and reference pages.</p>
+  <ul id="search-results"></ul>
+</dialog>
+</body></html>
