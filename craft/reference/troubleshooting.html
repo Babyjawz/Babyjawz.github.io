@@ -35,6 +35,7 @@
 
     <article><p>Use the symptom checks below when Craft cannot scan, save a choice, build a patch or produce the expected menu behaviour. Check the intended profile and output activation before investigating a particular recipe.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="heading-anchor" href="#troubleshooting" aria-label="Link to Troubleshooting">#</a></h2>
+<p><strong>MO2 startup hotfix (30 October 2026):</strong> The initial Craft.exe package could close immediately when launched through MO2. Use the corrected download if affected. This was a release-packaging fault; the corrected package keeps the bundled runtime and needs no new dependency. Back up <code>app\decisions.json</code> before replacing the release folder.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable reference table"><table>
 <thead>
 <tr>
@@ -51,8 +52,12 @@
 <td>Correct the game path in MO2 and confirm that Skyrim&#39;s <code>Data</code> folder exists.</td>
 </tr>
 <tr>
-<td>The app does not open</td>
-<td>Extract the whole release again, including <code>app</code>. Check both launch logs listed above. A framework-dependent development build differs from the self-contained player release.</td>
+<td>The app opens directly but closes immediately through MO2</td>
+<td>Install the corrected 30 October launch-hotfix package. The initial apphost could crash with <code>0xC0000005</code> before Craft started; a direct startup check did not detect it. Preserve <code>app\decisions.json</code> when updating.</td>
+</tr>
+<tr>
+<td>The app does not open at all</td>
+<td>Extract the complete corrected release, including <code>app</code>. Check both launch logs listed above. A framework-dependent development build differs from the self-contained player release.</td>
 </tr>
 <tr>
 <td>An expected recipe is missing</td>
