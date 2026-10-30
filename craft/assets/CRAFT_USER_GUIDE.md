@@ -214,14 +214,11 @@ When collecting JSON output, invoke the application executable inside `app` dire
 
 ## Troubleshooting
 
-**MO2 startup hotfix (30 October 2026):** The initial Craft.exe package could close immediately when launched through MO2. Use the corrected download if affected. This was a release-packaging fault; the corrected package keeps the bundled runtime and needs no new dependency. Back up `app\decisions.json` before replacing the release folder.
-
 | Symptom | What to check |
 |---|---|
 | **Could not find the MO2 instance** | Keep the complete app inside the instance's `tools` folder, or set `--instance` to the folder containing `ModOrganizer.ini`, `profiles`, and `mods`. |
 | **Skyrim Data folder not found** or missing **gamePath** | Correct the game path in MO2 and confirm that Skyrim's `Data` folder exists. |
-| The app opens directly but closes immediately through MO2 | Install the corrected 30 October launch-hotfix package. The initial apphost could crash with `0xC0000005` before Craft started; a direct startup check did not detect it. Preserve `app\decisions.json` when updating. |
-| The app does not open at all | Extract the complete corrected release, including `app`. Check both launch logs listed above. A framework-dependent development build differs from the self-contained player release. |
+| The app does not open | Extract the complete release, including the `app` folder, and launch the top-level `Craft.exe`. Check both launch logs listed above. Include the relevant log excerpts when reporting a startup problem. |
 | An expected recipe is missing | Check the active profile, enabled source plugin, selected source mods, search, station, and Show filter. Click **All mods**, clear the search, choose **All stations** and **All recipes**, then rescan. Review scan warnings. |
 | A plugin is skipped or missing | Confirm the file is present and enabled in the active profile. Resolve the reported plugin problem and rescan. An incomplete scan may omit recipes or winners. |
 | **Saved decision has no active recipe** | The recipe is no longer in this profile or its ID changed. The saved decision is retained. Restore the relevant source if intended, or keep the backup while revising your choices. |
